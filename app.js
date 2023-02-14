@@ -2,6 +2,7 @@ const express = require('express')      // Fetch express modules
 const bodyParser = require('body-parser')       // Fetch body-pareser modules
 const cookieParser = require('cookie-parser')       // Fetch cookie-parser modules  
 const expressLayouts = require('express-ejs-layouts');      // Fetch the Express-EJS layout module.
+const db = require('./config/mongoose');
 const app = express()
 
 app.set('view engine', 'ejs');      // Set View Engine 
