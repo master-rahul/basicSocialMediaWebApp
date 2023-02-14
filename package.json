@@ -4,6 +4,7 @@
   "description": "Basic Social Media Web Application covering all aspects of MVC architechure. This project uses Node, Express, Mongo, Passport, SASS",
   "main": "app.js",
   "scripts": {
+    "start" : "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/master-rahul/basicSocialMediaWebApp/issues"
   },
-  "homepage": "https://github.com/master-rahul/basicSocialMediaWebApp#readme"
+  "homepage": "https://github.com/master-rahul/basicSocialMediaWebApp#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
 }
