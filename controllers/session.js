@@ -1,6 +1,9 @@
 module.exports.create = function (request, response) {
-    return response.render('home', { title: 'Create' })
+    return response.redirect('/profile')
 }
 module.exports.destroy = function (request, response) {
-    return response.render('home', { title: 'Destroy' })
+    request.logout(function (error) {
+        if (error) { response.redirect('/'); }
+        response.redirect('/');
+    });
 }

@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const userController = require('../controllers/user')
+const passport = require('../config/passport_local_strategy')
 
-
-router.get('/signIn', userController.signIn)
-router.get('/signUp', userController.signUp)
+router.get('/signIn', passport.redirectAuthenticated, userController.signIn)
+router.get('/signUp', passport.redirectAuthenticated, userController.signUp)
 router.post('/add', userController.add)
 router.get('/remove', userController.remove)
 
