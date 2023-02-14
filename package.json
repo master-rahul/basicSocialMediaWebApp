@@ -1,0 +1,19 @@
+{
+  "name": "basicsocialmediawebapp",
+  "version": "1.0.0",
+  "description": "Basic Social Media Web Application covering all aspects of MVC architechure. This project uses Node, Express, Mongo, Passport, SASS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/master-rahul/basicSocialMediaWebApp.git"
+  },
+  "author": "Rahul Verma",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/master-rahul/basicSocialMediaWebApp/issues"
+  },
+  "homepage": "https://github.com/master-rahul/basicSocialMediaWebApp#readme"
+}
