@@ -3,9 +3,9 @@ const router = express.Router();
 const postController = require('../controllers/post');
 const passport = require('../config/passport_local_strategy')
 
-router.get('/create', passport.redirectAuthenticated, postController.create);
-router.get('/edit', passport.redirectAuthenticated, postController.edit);
-router.get('/delete', passport.redirectAuthenticated, postController.delete);
-router.get('/hide', passport.redirectAuthenticated, postController.hide);
+router.post('/create', passport.checkAuthentication, postController.create);
+router.get('/edit', passport.checkAuthentication, postController.edit);
+router.get('/delete', passport.checkAuthentication, postController.delete);
+router.get('/hide', passport.checkAuthentication, postController.hide);
 
 module.exports = router;
