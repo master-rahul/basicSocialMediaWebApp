@@ -5,6 +5,7 @@ const expressLayouts = require('express-ejs-layouts');      // Fetch the Express
 const passport = require('passport');               // Fetch passport modules.
 const session = require('express-session');         // Fetch express-session modules
 const MongoStore = require('connect-mongo');        // Fetch connect-mongo modules.
+const sassMiddleware = require('node-sass-middleware');
 const db = require('./config/mongoose');
 const passportLocal = require('./config/passport_local_strategy');
 const app = express()
@@ -15,6 +16,13 @@ app.set('layout extractStyles', true);      // SetLayout properties for extracti
 app.set('layout extractScripts', true);     // Set Layout propertied for extracting Script.
 
 // Middlewares :
+app.use(sassMiddleware({
+    src: './assets/scss',    // source to pick up the scss files to convert.
+    dest: './assets/css',    // destination for the converted scss file
+    debug: false,             // prints error when the error in converting in scss to css.
+    outputStyle: 'extended', // all code in one line or multiple lined
+    prefix: '/css'           // use to redirect to './assets/ weheneer '/css' is found to template engine
+}));
 app.use(expressLayouts);                                           
 app.use(express.static('./assets'));
 app.use(bodyParser.urlencoded({extended : false}));
@@ -28,7 +36,8 @@ app.use(session({
     store: MongoStore.create(
         {                                      // mongo store is used to store cookie in db.
             mongoUrl: 'mongodb://localhost/basicSocialMediaWebApp',
-            autoRemove: 'disabled',
+            autoRemove: 'native',
+            autoRemoveInterval: 30
         }, function (error) {
             console.log(error || 'connect-mongodb setup ok');
         }
