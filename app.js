@@ -23,16 +23,16 @@ app.use(sassMiddleware({
     outputStyle: 'extended', // all code in one line or multiple lined
     prefix: '/css'           // use to redirect to './assets/ weheneer '/css' is found to template engine
 }));
-app.use(expressLayouts);                                           
-app.use(express.static('./assets'));
-app.use(bodyParser.urlencoded({extended : false}));
-app.use(cookieParser());
+app.use(expressLayouts);      // to implements partials                                     
+app.use(express.static('./assets'));    // to access files during rendering
+app.use(bodyParser.urlencoded({extended : false}));        // parses form data into readable object
+app.use(cookieParser());            // parses cookie 
 app.use(session({
     name: 'sample',
     secret: 'hello',
     saveUninitialized: false,
     resave: false,
-    cookie: { maxAge: (1000 * 60 * 20) },
+    cookie: { maxAge: (1000 * 1000) },
     store: MongoStore.create(
         {                                      // mongo store is used to store cookie in db.
             mongoUrl: 'mongodb://localhost/basicSocialMediaWebApp',
