@@ -1,0 +1,43 @@
+#heading {
+    height: 7vh;
+    min-height: 80px;
+    width: 100%;
+    background-color: skyblue;
+    display: flex;
+    justify-content: space-between;
+}
+
+#name {
+    height: 80%;
+    width: 20%;
+    margin-left: 20px;
+    /*background-color: red;*/
+    text-align: center;
+    font-weight: 600;
+    font-family: sans-serif;
+    font-size: 2.2rem;
+    padding-top: 15px;
+    display: inline-flex;
+}
+
+#links {
+    height: 80%;
+    width: 20%;
+    margin-right: 20px;
+    display: flex;
+    padding-top: 15px;
+    text-align: center;
+    justify-content: space-around;
+}
+
+#links a button {
+    min-height: 40px;
+    min-width: 100px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: monospace;
+    background-color: lightblue;
+    box-shadow: 5px 5px 2px blue;
+    border-radius: 5%;
+
+}
