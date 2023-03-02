@@ -18,14 +18,29 @@
   padding-top: 15px;
   display: inline-flex; }
 
+#name a button {
+  min-height: 40px;
+  min-width: 100px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: monospace;
+  background-color: lightblue;
+  box-shadow: 5px 5px 2px blue;
+  border-radius: 5%; }
+
 #links {
   height: 80%;
   width: 20%;
   margin-right: 20px;
   display: flex;
-  padding-top: 15px;
   text-align: center;
   justify-content: space-around; }
+
+#links p {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  font-weight: 600; }
 
 #links a button {
   min-height: 40px;
@@ -35,4 +50,5 @@
   font-family: monospace;
   background-color: lightblue;
   box-shadow: 5px 5px 2px blue;
-  border-radius: 5%; }
+  border-radius: 5%;
+  margin-top: 20px; }

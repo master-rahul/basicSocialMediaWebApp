@@ -4,7 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 const MongoStore = require('connect-mongo');        // Fetch connect-mongo modules.
 const cookie = require('cookie');
-
+let cookieValue;
 const { MongoClient } = require('mongodb');
 // or as an es module:
 // import { MongoClient } from 'mongodb'
@@ -57,7 +57,7 @@ passport.checkAuthentication = function (request, response, next) {
 }
 
 passport.setAuthenticated = function (request, response, next) {
-    if(request.isAuthenticated()) response.locals = request.user;
+    if(request.isAuthenticated()) response.locals.name = request.user.name;
     return next();
 }
 
@@ -66,16 +66,22 @@ passport.redirectAuthenticated = function(request, response, next){
     return next();
 }
 
-passport.addUserData = function(request, response, next){
+passport.decodeCookie = function(request, response, next){
     //console.log(request.cookies.sample);
-    console.log('hh')
-     if(!request.cookies.sample) return next();
-
-        console.log('fdf')
+    if(!request.cookies.sample) return next();
     const sidParsed = cookieParser.signedCookie(request.cookies.sample, 'hello');
     console.log(sidParsed);
+    cookieValue = sidParsed;
     console.log(request.cookies);
-    if (request.isAuthenticated()) response.locals = request.user;
+    if (request.isAuthenticated()){
+        response.locals = request.user;
+        console.log(request.user);
+        request.cookieValue = sidParsed;
+    } 
+    return next();
+}
+passport.addValue = function(request, response, next) {
+    request.cookieValue = cookieValue;
     return next();
 }
 

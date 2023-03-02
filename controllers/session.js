@@ -1,8 +1,6 @@
 const passport = require("../config/passport_local_strategy");
 
-module.exports.create = function (request, response) {
-    passport.addUserData();
-  
+module.exports.create = function (request, response) {  
     return response.redirect('/');
 }
 module.exports.destroy = function (request, response) {
