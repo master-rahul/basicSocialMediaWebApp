@@ -27,23 +27,39 @@
     <div id="post-list-container">
         <ul>        
             <h4>All Posts : </h4>
-            <%for(post of posts){%>
-                <li>
-                    <%=post.content%>
-                    <i>
-                        , By : <u><%=post.user.name%></u>
-                        , UpdatedAt : <u><%=post.updatedAt.toDateString() %></u>
-                    </i>
-                    <form action="/post/comment" method="POST">
-                        <input type="hidden" name="postId" value="<%=post._id%>">
-                        <input type="hidden" name="userId" value="<%=locals.userId%>">
-                        <input type="text" name="content" placeholder="Enter Your Comment.." required>
-                        <button type="submit">Send</button>
-                    </form>
-                    <br>
-                </li>
-            <%}%>
+            <%if(locals.posts){%>
+                <%for(post of posts){%>
+                    <li>
+                        <%=post.content%>
+                            <i>
+                                , By : <u>
+                                    <%=post.user.name%>
+                                </u>
+                                , UpdatedAt : <u>
+                                    <%=post.updatedAt.toDateString() %>
+                                </u>
+                            </i>
+                            <%if(locals.names){%>
+                                <form action="/post/comment" method="POST">
+                                    <input type="hidden" name="postId" value="<%=post._id%>">
+                                    <input type="text" name="content" placeholder="Enter Your Comment.." required>
+                                    <button type="submit">Send</button>
+                                </form>
+                            <%}%>
+                            <div class="post-comments-list">
+                                <ul id="post-comments-<%=post._id%>">
+                                    <%for(comment of post.comments){%>
+                                        <li>
+                                            <%=comment.content%> :: <%=comment.user.name%>
+                                        </li>
+                                    <%}%>
+                                </ul>
+                            </div>
+                            <br>
+                    </li>
+            <%}}%>
         </ul>
+        
     </div>
 
 </section>
