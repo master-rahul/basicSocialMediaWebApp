@@ -2,11 +2,13 @@
 <link rel="stylesheet" href="/css/home.css">
 <h1> Welcome To Home Page</h1>
 <section id="feed-posts">
-    <h4>Post : </h4>
-    <form action="/post/create" id="new-post-form" method="POST">
-        <textarea name="content" cols="50" rows="5" placeholder="Type here..."></textarea>
-        <input type="submit" value="Post">
-    </form>
+    <%if(locals.names){%>
+        <h4>Post : </h4>
+        <form action="/post/create" id="new-post-form" method="POST">
+            <textarea name="content" cols="50" rows="5" placeholder="Type here..." required></textarea>
+            <input type="submit" value="Post">
+        </form>
+    <%}%>
     <% /* %>
         <div id="post-list-container">
             <ul>
@@ -29,9 +31,16 @@
                 <li>
                     <%=post.content%>
                     <i>
-                        , By : <%=post.user.name%>
-                        , UpdatedAt <%=post.updatedAt%>
+                        , By : <u><%=post.user.name%></u>
+                        , UpdatedAt : <u><%=post.updatedAt.toDateString() %></u>
                     </i>
+                    <form action="/post/comment" method="POST">
+                        <input type="hidden" name="postId" value="<%=post._id%>">
+                        <input type="hidden" name="userId" value="<%=locals.userId%>">
+                        <input type="text" name="content" placeholder="Enter Your Comment.." required>
+                        <button type="submit">Send</button>
+                    </form>
+                    <br>
                 </li>
             <%}%>
         </ul>
