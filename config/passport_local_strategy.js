@@ -39,14 +39,17 @@ passport.use(new LocalStrategy({
 
 passport.serializeUser(function (user, done) {
     console.log('serialize');
-    done(null, user.id);
+    done(null, {id :user._id, username:user.name});
 });
 
 passport.deserializeUser(function (id, done) {
     console.log('de-serialize')
-    User.findById(id, function (error, user) {
+    User.findById(id.id, function (error, user) {
         if (error) return done(error);
-        else return done(null, user);
+        else {
+            var userData = {name : user.name, id : user.id};
+            return done(null, userData);
+        }
     });
 });
 
@@ -57,7 +60,8 @@ passport.checkAuthentication = function (request, response, next) {
 }
 
 passport.setAuthenticated = function (request, response, next) {
-    if(request.isAuthenticated()) response.locals.name = request.user.name;
+    if(request.isAuthenticated()) response.locals.names = request.user.name;
+    
     return next();
 }
 
