@@ -7,5 +7,36 @@
         <textarea name="content" cols="50" rows="5" placeholder="Type here..."></textarea>
         <input type="submit" value="Post">
     </form>
+    <% /* %>
+        <div id="post-list-container">
+            <ul>
+                
+                <h4>All Posts : </h4>
+                <%if(locals.name){%>
+                    <%for(var i=0; i < name.length; i++){%>
+                        <li>
+                            <b>Author :</b> <%=name[i]%>, &nbsp;&nbsp;&nbsp;<b>Content:</b> <%=content[i]%>
+                        </li>
+                <%}}%>
+                
+            </ul>
+        </div>
+    <% */ %>
+    <div id="post-list-container">
+        <ul>        
+            <h4>All Posts : </h4>
+            <%for(post of posts){%>
+                <li>
+                    <%=post.content%>
+                    <i>
+                        , By : <%=post.user.name%>
+                        , UpdatedAt <%=post.updatedAt%>
+                    </i>
+                </li>
+            <%}%>
+        </ul>
+    </div>
+
 </section>
+
    

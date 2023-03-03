@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="/css/_header.css">
 <div id="heading">
     <div id="name">The Social App</div>
-    <%if(locals.name){%>
+    <%if(locals.names){%>
         <div id="links">
-            <p><%=locals.name%></p>
+            <p><%=locals.names%></p>
             <a href="/session/Destroy"><button type="button">LogOut</button></a>
         </div>
     <%}else{%>
