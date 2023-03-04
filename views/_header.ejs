@@ -1,9 +1,14 @@
 <link rel="stylesheet" href="/css/_header.css">
 <div id="heading">
     <div id="name">The Social App</div>
-    <%if(locals.names){%>
+    <%if(locals.name){%>
         <div id="links">
-            <p><%=locals.names%></p>
+            <%if(locals.profileData){%>
+                <a href="/"><img src="/icons/user.png"></a>
+            <%}else{%>
+                <a href="/user/profile/"><img src="/icons/user.png"></a>
+            <%}%>
+            <p><%=locals.name%></p>
             <a href="/session/Destroy"><button type="button">LogOut</button></a>
         </div>
     <%}else{%>

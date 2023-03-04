@@ -40,9 +40,26 @@ module.exports.home = function(request, response) {
     // });
 
     // Populating a refrence field of PostSchema with all Data from the reference Field document.
-    Post.find({}).populate('user').exec(function(error, posts){
-        if(error) return response.redirect('back');
-        else return response.render('home',{title : 'Home', posts : posts});
-    });
+    
+    // Post.find({}).populate('user').exec(function(error, posts){
+    //     if(error) return response.redirect('back');
+    //     else return response.render('home',{title : 'Home', posts : posts});
+    // });
+
+    Post.find({}).populate('user').populate(
+        {
+            path :'comments',
+            populate:{
+                path: 'user'
+            }
+        }).exec(function (error, posts) {
+            if (error) return response.redirect('back');
+            else{
+                User.find({}, function (error, user) {
+                    if(error) return response.redirect('back');
+                    else return response.render('home', {title : 'Home', posts : posts, allUsers : user})
+                });
+            } 
+        });
 
 }

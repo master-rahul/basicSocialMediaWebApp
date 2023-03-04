@@ -1,15 +1,18 @@
 
-    <link rel="stylesheet" href="/css/profile.css">
-
-    <h1> Hi This is Profile Page</h1>
-    <ol>
-        <l1>
-            <%=locals.name%>
-        </l1>
-        <l1>
-            <%=locals.email%>
-        </l1>
-        <l1>
-            <a href="/session/destroy"><button type="submit">Sign Out</button></a>
-        </l1>
-    </ol>
+<link rel="stylesheet" href="/css/profile.css">
+<h1> Hi This is Profile Page</h1>    
+<%if(locals.id == locals.profileData.id || locals.userId == locals.profileData.id){%>
+       
+    <form action="/user/update/<%=profileData.id%>" method="POST">
+        <label>Update Your Information : </label>
+        <br>
+        <input type="text" name="name" placeholder="Enter Your Name" value="<%=profileData.name%>" required>
+        <input type="email" name="email" placeholder="Enter Your Email" value="<%=profileData.email%>" required>
+        <button type="submit">Submit</button>
+    </form>
+<%}else{%>
+    <ul>
+        <li><%=locals.profileData.name%></li>
+        <li><%=locals.profileData.email%></li>
+    </ul>
+<%}%>

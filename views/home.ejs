@@ -1,51 +1,55 @@
 
 <link rel="stylesheet" href="/css/home.css">
-<h1> Welcome To Home Page</h1>
-<section id="feed-posts">
-    <%if(locals.names){%>
-        <h4>Post : </h4>
-        <form action="/post/create" id="new-post-form" method="POST">
-            <textarea name="content" cols="50" rows="5" placeholder="Type here..." required></textarea>
-            <input type="submit" value="Post">
-        </form>
-    <%}%>
-    <% /* %>
+<div id="home-container">
+   
+    <section id="feed-posts">
+        <%if(locals.name){%>
+            <h4>Post : </h4>
+            <form action="/post/create" id="new-post-form" method="POST">
+                <textarea name="content" cols="50" rows="5" placeholder="Type here..." required></textarea>
+                <input type="submit" value="Post">
+            </form>
+        <%}%>
+        <!-- <% /* %>
+            <div id="post-list-container">
+                <ul>
+                    <h4>All Posts : </h4>
+                    <%if(locals.name){%>
+                        <%for(var i=0; i < name.length; i++){%>
+                            <li>
+                                <b>Author :</b>
+                                <%=name[i]%>, &nbsp;&nbsp;&nbsp;<b>Content:</b>
+                                    <%=content[i]%>
+                            </li>
+                            <%}}%>
+        
+                </ul>
+            </div>
+        <% */ %> -->
+            
         <div id="post-list-container">
             <ul>
-                
-                <h4>All Posts : </h4>
-                <%if(locals.name){%>
-                    <%for(var i=0; i < name.length; i++){%>
-                        <li>
-                            <b>Author :</b> <%=name[i]%>, &nbsp;&nbsp;&nbsp;<b>Content:</b> <%=content[i]%>
-                        </li>
+                <%if(locals.posts.length > 0){%>
+                    <h4>All Posts : </h4>
+                    <%for(post of posts){%>
+                        <%- include('_post') -%>
                 <%}}%>
-                
             </ul>
+        
         </div>
-    <% */ %>
-    <div id="post-list-container">
-        <ul>        
-            <h4>All Posts : </h4>
-            <%for(post of posts){%>
-                <li>
-                    <%=post.content%>
-                    <i>
-                        , By : <u><%=post.user.name%></u>
-                        , UpdatedAt : <u><%=post.updatedAt.toDateString() %></u>
-                    </i>
-                    <form action="/post/comment" method="POST">
-                        <input type="hidden" name="postId" value="<%=post._id%>">
-                        <input type="hidden" name="userId" value="<%=locals.userId%>">
-                        <input type="text" name="content" placeholder="Enter Your Comment.." required>
-                        <button type="submit">Send</button>
-                    </form>
-                    <br>
-                </li>
+    
+    </section>
+    
+    <section id="user-friends">
+        <h4>Friends</h4>
+        <%for(u of allUsers){%>
+            <%if(u.id == locals.userId) continue; %>
+            <p>
+                <a href="/user/profile/<%=u.id%>">
+                    <%=u.name%>
+                </a>
+            </p>
             <%}%>
-        </ul>
-    </div>
+    </section>
 
-</section>
-
-   
+</div>
