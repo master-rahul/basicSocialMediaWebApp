@@ -54,7 +54,12 @@ module.exports.home = function(request, response) {
             }
         }).exec(function (error, posts) {
             if (error) return response.redirect('back');
-            else return response.render('home', { title: 'Home', posts: posts });
+            else{
+                User.find({}, function (error, user) {
+                    if(error) return response.redirect('back');
+                    else return response.render('home', {title : 'Home', posts : posts, allUsers : user})
+                });
+            } 
         });
 
 }

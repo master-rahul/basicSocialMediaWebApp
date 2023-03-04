@@ -60,7 +60,7 @@ passport.checkAuthentication = function (request, response, next) {
 
 passport.setAuthenticated = function (request, response, next) {
     if(request.isAuthenticated()) {
-        response.locals.names = request.user.name;
+        response.locals.name = request.user.name;
         response.locals.userId = request.user.id;
     }
     return next();
