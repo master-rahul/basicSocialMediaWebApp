@@ -4,9 +4,9 @@ const { findById } = require('../models/post');
 const Post = require('../models/post');
 const User = require('../models/user');
 
-module.exports.home = function(request, response) {
-   // console.log(request);
+module.exports.home =  async function(request, response) {
 
+    // DECODING COOKIES
     // if (request.cookies.sample) {
     //     const sidParsed = cookieParser.signedCookie(request.cookies.sample, 'hello');
     //     if (request.isAuthenticated()) {
@@ -15,12 +15,12 @@ module.exports.home = function(request, response) {
     //             if (error) console.log('Error Finding ID');
     //             else{
     //                 response.userName = user.name;
-    //             } 
+    //             }
     //         });
     //     }
     // }
 
-   
+   //
     // Post.find(async function (error, data) {
     //     if (error) return response.redirect('back');
     //     else{
@@ -36,30 +36,44 @@ module.exports.home = function(request, response) {
     //             }
     //         }
     //         return response.render('home', { title: 'Home',  name : names, content : values });
-    //     } 
+    //     }
     // });
 
     // Populating a refrence field of PostSchema with all Data from the reference Field document.
-    
+
     // Post.find({}).populate('user').exec(function(error, posts){
     //     if(error) return response.redirect('back');
     //     else return response.render('home',{title : 'Home', posts : posts});
     // });
 
-    Post.find({}).populate('user').populate(
-        {
-            path :'comments',
-            populate:{
-                path: 'user'
-            }
-        }).exec(function (error, posts) {
-            if (error) return response.redirect('back');
-            else{
-                User.find({}, function (error, user) {
-                    if(error) return response.redirect('back');
-                    else return response.render('home', {title : 'Home', posts : posts, allUsers : user})
-                });
-            } 
-        });
 
+    // SECOND-BEST WAY FOR QUERIES
+
+    // Post.find({}).populate('user').populate(
+    //     {
+    //         path :'comments',
+    //         populate:{
+    //             path: 'user'
+    //         }
+    //     }).exec(function (error, posts) {
+    //         if (error) return response.redirect('back');
+    //         else{
+    //             User.find({}, function (error, user) {
+    //                 if(error) return response.redirect('back');
+    //                 else return response.render('home', {title : 'Home', posts : posts, allUsers : user})
+    //             });
+    //         }
+    //     });
+
+
+    // BEST WAY FOR QUERIES (ASYNC + AWAIT)
+    try{
+        let posts = await Post.find({}).populate('user').populate({ path: 'comments', populate: { path: 'user' } });
+        let users = await User.find();
+        return response.render('home', { title: 'Home', posts: posts, allUsers: users });
+    }catch(error){
+        console.log('Error : ',error);
+        return response.status('500').send();
+    }
+ 
 }

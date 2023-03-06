@@ -8,7 +8,9 @@ const MongoStore = require('connect-mongo');        // Fetch connect-mongo modul
 const sassMiddleware = require('node-sass-middleware');
 const db = require('./config/mongoose');
 const passportLocal = require('./config/passport_local_strategy');
-const app = express()
+const ipAddress = require('./config/ipAddress');
+const app = express();
+
 
 app.set('view engine', 'ejs');      // Set View Engine 
 app.set('views', './views');        // Set View Engine Path
@@ -48,7 +50,7 @@ app.use(passport.session());
 app.use(passport.setAuthenticated);
 app.use('/', require('./routes/route'));
 
-app.listen(process.env.PORT || 8000, function(error){
+app.listen(process.env.PORT || 8000, ipAddress, function(error){
     if(error) console.log('Error : Launcing Express Server : ', error)
     else console.log('Success : Launching Express Server') 
 })

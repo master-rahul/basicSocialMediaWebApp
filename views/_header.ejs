@@ -8,7 +8,7 @@
             <%}else{%>
                 <a href="/user/profile/"><img src="/icons/user.png"></a>
             <%}%>
-            <p><%=locals.name%></p>
+            <p><%=locals.name.substring(0,12)%></p>
             <a href="/session/Destroy"><button type="button">LogOut</button></a>
         </div>
     <%}else{%>
