@@ -18,16 +18,17 @@ const dbName = 'myProject';
 
 passport.use(new LocalStrategy({
     usernameField: 'email', // needs to match with field having property unique in UserSchema.
+    passReqToCallback : true // allows us to set the first arguments as request
 },
-    function (email, password, done) {
+    function (request, email, password, done) {
         // find the user and estaablish the identity
         User.findOne({ email: email }, function (error, user) {
             if (error) {
-                console.log('Error finding the user');
+                request.flash('error', 'User not found');
                 return done(error);
             }
             else if (!user || user.password != password) {
-                console.log('Invalid username password');
+                request.flash('error', 'Error Username/Password');
                 return done(null, false);
             } else {
                 console.log('User authenticated');

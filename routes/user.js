@@ -10,5 +10,7 @@ router.get('/remove', userController.remove);
 router.post('/update/:id', passport.checkAuthentication, userController.update);
 router.get('/profile/:id', passport.checkAuthentication, userController.profile);
 router.get('/profile', passport.checkAuthentication, userController.profile);
+// router.get('/error', userController.error);
+
 
 module.exports = router;

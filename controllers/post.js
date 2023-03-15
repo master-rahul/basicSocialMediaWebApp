@@ -15,9 +15,19 @@ module.exports.create = async function (request, response) {
     //     }
     // });
     try{
-        let create = await Post.create({ content : request.body.content, user : request.user.id});
+        let posts = await Post.create({ content : request.body.content, user : request.user.id});
+        if(request.xhr){
+            return response.status(200).json({
+                data : {
+                    posts :posts
+                }, 
+                message : "Post Created!"
+            });
+        }
+        request.flash('success', 'Post Published Successfully');
         return response.redirect('back');
     } catch(error){
+        request.flash('error', 'Error Publishing Post');
        return response.status('500').send();
     }
 }
@@ -38,10 +48,22 @@ module.exports.delete = async function (request, response) {
         let post = await Post.findById(request.params.id);
         if (post && post.user == request.user.id) {
             post.remove();
-            let comment = await Comment.deleteMany({ post: request.params.id });
+            await Comment.deleteMany({ post: request.params.id });
+            request.flash('success', 'Post Deleted Successfully');
+            if(request.xhr){
+                return response.status(200).json({
+                    data : {
+                        posts_id : request.params.id
+                    },
+                    message: "Post Deleted"
+                });
+            }
+            return response.redirect('back');
         }
+        request.flash('error', 'Post Deletion not Successful');
         return response.redirect('back');
     } catch(error){
+        request.flash('error', 'Post Deletion not Successful');
         return response.status(500).send();
     }
 }

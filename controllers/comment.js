@@ -48,9 +48,14 @@ module.exports.create = async function (request, response) {
             let create = await Comment.create({ content: request.body.content, user: request.user.id, post: request.body.postId });
             post.comments.push(create);
             post.save();
+            request.flash('success', 'Comment Published Successfully');
+            return response.redirect('back');
+        }else{
+            request.flash('error', 'Error Publishing Comment');
+            return response.redirect('back');
         }
-        return response.redirect('back');
     } catch(error){
+        request.flash('error', 'Comment Publishing Post');
         return response.status('500').send();
     }
 
@@ -73,12 +78,14 @@ module.exports.delete = async function (request, response) {
 
     //BEST WAY
     try{
-            let del = await Comment.findById(request.params.id);
-            var postId = del.post;
-            del.remove();
-            let upd = await Post.findByIdAndUpdate(postId, { $pull: { comments: request.params.id } });
-            return response.redirect('back');
+        let del = await Comment.findById(request.params.id);
+        var postId = del.post;
+        del.remove();
+        await Post.findByIdAndUpdate(postId, { $pull: { comments: request.params.id } });
+        request.flash('success', 'Success Deleting Comment');
+        return response.redirect('back');
     } catch(error){
-            return response.status('500').send();
+        request.flash('error', 'Error Deleting Comment');
+        return response.status('500').send();
     }
 }
