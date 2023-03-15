@@ -6,7 +6,7 @@
         <%if(locals.name){%>
             <h4>Post : </h4>
             <form action="/post/create" id="new-post-form" method="POST">
-                <textarea name="content" cols="50" rows="5" placeholder="Type here..." required></textarea>
+                <textarea id="text-content" name="content" cols="50" rows="5" placeholder="Type here..." required></textarea>
                 <input type="submit" value="Post">
             </form>
         <%}%>
@@ -28,12 +28,16 @@
         <% */ %> -->
             
         <div id="post-list-container">
+            <h4>All Posts : </h4>
             <ul>
                 <%if(locals.posts.length > 0){%>
-                    <h4>All Posts : </h4>
-                    <%for(post of posts){%>
-                        <%- include('_post') -%>
-                <%}}%>
+                    
+                    
+                        <%for(post of posts){%>
+                            <%- include('_post') -%>
+                        <%}%>
+                   
+                <%}%>
             </ul>
         
         </div>
@@ -53,3 +57,4 @@
     </section>
 
 </div>
+<script src="/js/home_post.js"></script>

@@ -30,12 +30,17 @@ module.exports.add = async function (request, response) {
     // BEST_WAY 
     try{
         let user = await User.findOne({ email: request.body.email });
-        if (user) return response.redirect('back');
+        if (user){
+            request.flash('error', 'User Already Exists');
+            return response.redirect('back');
+        } 
         else {
-            let add = await User.create({ name: request.body.name, email: request.body.email, password: request.body.password });
+            await User.create({ name: request.body.name, email: request.body.email, password: request.body.password });
+            request.flash('success', 'Used Added Successfuly');
             return response.redirect('/user/signIn');
         }
-    }catch(error){
+    } catch (error) {
+            request.flash('error', 'User not Added');
             return response.staus('500').send();
     }
 
@@ -56,7 +61,8 @@ module.exports.update = async function (request, response) {
     // BEST_WAY
     try{
         if (request.user.id != request.params.id) return response.status(401).send('Unauthorized');
-        let upd = await User.findByIdAndUpdate(request.params.id,{ name: request.body.name, email: request.body.email });
+        await User.findByIdAndUpdate(request.params.id,{ name: request.body.name, email: request.body.email });
+        request.flash('success', 'Profile Updated Successful');
         return response.redirect('back');
     } catch(error){
         return response.status(401).send('Unauthorized');
@@ -81,3 +87,8 @@ module.exports.profile =  async function (request, response) {
         return response.status(401).send('Unauthorized');
     }
 }
+
+// module.exports.error = function (request, response) {
+//     request.flash('error', 'Username And Password Error');
+//     return response.redirect('back');
+// }

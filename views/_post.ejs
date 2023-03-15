@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="/css/_post.css">
-<div id="comments">
-<li>
+
+<li id="post-<%=post._id%>">
     <%if(post.user.id==locals.userId){ %>
-        <a href="/post/delete/<%=post.id%>">X</a>
+        <a class="delete-post-button" href="/post/delete/<%=post._id%>">X</a>
     <%}%>
     <%=post.content%>
      <small><i>, By : <u><%=post.user.name%></u>, UpdatedAt : <u><%=post.updatedAt.toDateString() %></u></i></small>
@@ -20,7 +20,6 @@
             <%}%>
         </ul>
     </div>
-                        <br>
+    <br>
 </li>
 
-</div>
