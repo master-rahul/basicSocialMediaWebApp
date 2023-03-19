@@ -19,16 +19,18 @@ module.exports.create = async function (request, response) {
         if(request.xhr){
             return response.status(200).json({
                 data : {
-                    posts :posts
+                    post : posts,
+                    name : request.user.name
                 }, 
                 message : "Post Created!"
-            });
+            }).send();
+        }else{
+            request.flash('success', 'Post Published Successfully');
+            return response.redirect('back');
         }
-        request.flash('success', 'Post Published Successfully');
-        return response.redirect('back');
     } catch(error){
         request.flash('error', 'Error Publishing Post');
-       return response.status('500').send();
+       return response.status(500).send();
     }
 }
 
@@ -49,20 +51,24 @@ module.exports.delete = async function (request, response) {
         if (post && post.user == request.user.id) {
             post.remove();
             await Comment.deleteMany({ post: request.params.id });
-            request.flash('success', 'Post Deleted Successfully');
+            console.log(request.params.id);
             if(request.xhr){
+                console.log('Deleting');
                 return response.status(200).json({
                     data : {
                         posts_id : request.params.id
                     },
                     message: "Post Deleted"
-                });
+                }).send();
+            }else{
+                request.flash('success', 'Post Deletion Successful');
+                return response.redirect('back');
             }
-            return response.redirect('back');
         }
         request.flash('error', 'Post Deletion not Successful');
         return response.redirect('back');
     } catch(error){
+        //console.log(error);
         request.flash('error', 'Post Deletion not Successful');
         return response.status(500).send();
     }
