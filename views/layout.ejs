@@ -10,6 +10,7 @@
     <!-- <link rel = "stylesheet" href ="/css/noty.css">
     <script src ="/js/noty.js"></script> -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
     <%-style%>
     <link rel="stylesheet" type="text/css" href="/css/layout.css">
 </head>
@@ -25,14 +26,14 @@
     <%-body%>
     <%-include('_footer.ejs')%>
     <%-script%>
-    <script>
+    <script id="flash-message">
         <%if (flash.success && flash.success.length > 0) {%>
             new Noty({
                 theme : 'relax',
                 type : 'success',
                 text : "<%=flash.success%>",
                 layout : 'topRight',
-                timeout : 1500
+                timeout : 500
             }).show();
         <%}%>
          <%if (flash.error && flash.error.length > 0) {%>
@@ -41,7 +42,7 @@
                     type: 'error',
                     text: "<%=flash.error%>",
                     layout: 'topRight',
-                    timeout: 1500
+                    timeout: 500
                 }).show();
         <%}%>
     </script>

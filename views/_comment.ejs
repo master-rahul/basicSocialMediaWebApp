@@ -1,8 +1,6 @@
-<li>
-    <%=comment.content%> :: <small><i>
-                <%=comment.user.name%>
-            </i></small>
-        <%if(post.user.id==locals.userId || locals.userId==comment.user.id){ %>
-            <a href="/comment/delete/<%=comment.id%>">X</a>
-            <%}%>
+<li id="comment-<%=comment._id%>" class="comment-list">
+    <%=comment.content%> :: <small><i><%=comment.user.name%></i></small>
+    <%if(post.user.id==locals.userId || locals.userId==comment.user.id){ %>
+        <a href="/comment/delete/<%=comment.id%>" class="comment-delete" id="comment-delete-<%=comment._id%>">X</a>
+    <%}%>
 </li>

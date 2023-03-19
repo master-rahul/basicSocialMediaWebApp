@@ -68,7 +68,7 @@ module.exports.home =  async function(request, response) {
 
     // BEST WAY FOR QUERIES (ASYNC + AWAIT)
     try{
-        let posts = await Post.find({}).sort('-createdAt').populate('user').populate({ path: 'comments', populate: { path: 'user' } });
+        let posts = await Post.find({}).sort('-createdAt').populate('user').populate({ path: 'comments', populate: { path: 'user' }, options: { sort: { createdAt: -1 } } });
         let users = await User.find();
         return response.render('home', { title: 'Home', posts: posts, allUsers: users });
     }catch(error){

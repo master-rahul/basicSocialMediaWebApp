@@ -45,18 +45,29 @@ module.exports.create = async function (request, response) {
     try{
         let post = await Post.findById(request.body.postId);
         if (post) {
-            let create = await Comment.create({ content: request.body.content, user: request.user.id, post: request.body.postId });
-            post.comments.push(create);
+            let comment = await Comment.create({ content: request.body.content, user: request.user.id, post: request.body.postId });
+            post.comments.push(comment);
             post.save();
-            request.flash('success', 'Comment Published Successfully');
-            return response.redirect('back');
+            if(request.xhr){
+                return response.status(200).json({
+                    data : {
+                        comment : comment,
+                        name : request.user.name,
+                    },
+                    message : "Comment Added"
+                });
+            }else{
+                request.flash('success', 'Comment Published Successfully');
+                return response.redirect('back');
+            }
+            
         }else{
             request.flash('error', 'Error Publishing Comment');
             return response.redirect('back');
         }
     } catch(error){
         request.flash('error', 'Comment Publishing Post');
-        return response.status('500').send();
+        return response.status(500).send();
     }
 
 }
@@ -82,10 +93,20 @@ module.exports.delete = async function (request, response) {
         var postId = del.post;
         del.remove();
         await Post.findByIdAndUpdate(postId, { $pull: { comments: request.params.id } });
-        request.flash('success', 'Success Deleting Comment');
-        return response.redirect('back');
+        if(request.xhr){
+            return response.status(200).json({
+                data :{
+                    comment : del,
+                },
+                message : "Comment Delete"
+            });
+        }else{
+            request.flash('success', 'Success Deleting Comment');
+            return response.redirect('back');
+        }
     } catch(error){
+        console.log(error);
         request.flash('error', 'Error Deleting Comment');
-        return response.status('500').send();
+        return response.status(500).send();
     }
 }
