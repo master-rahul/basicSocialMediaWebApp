@@ -61,11 +61,25 @@ module.exports.update = async function (request, response) {
     // BEST_WAY
     try{
         if (request.user.id != request.params.id) return response.status(401).send('Unauthorized');
-        await User.findByIdAndUpdate(request.params.id,{ name: request.body.name, email: request.body.email });
-        request.flash('success', 'Profile Updated Successful');
-        return response.redirect('back');
+        let user = await User.findById(request.params.id);
+        User.uploadedAvatar(request, response, function (error) {
+            if(error) console.log("Multer Error" , error);
+            console.log(request.file);
+            console.log(request.body);
+            user.name = request.body.name;
+            user.email = request.body.email;
+            if(request.file){
+                // this is saving the path along with filename in the avatar field of User Schema
+                user.avatar = User.avatarPath + '/' + request.file.filename;
+            }
+            user.save();
+            request.flash('success', 'Profile Updated Successful');
+            return response.redirect('back');
+        });
+       // await User.findByIdAndUpdate(request.params.id,{ name: request.body.name, email: request.body.email });
     } catch(error){
-        return response.status(401).send('Unauthorized');
+        request.flash('error', 'Unauthorized');
+        return response.staus(401).send();
     }
 }
 
@@ -82,9 +96,10 @@ module.exports.profile =  async function (request, response) {
     try{
         if(id == null) id = request.user.id;
         let find = await User.findById(id);
-        return response.render('profile', { title: 'Profile', profileData: find });
+        if(find != null) return response.render('profile', { title: 'Profile', profileData: find });
     } catch(error){
-        return response.status(401).send('Unauthorized');
+        request.flash('error', 'Unauthorized');
+        return response.staus(401).send();
     }
 }
 

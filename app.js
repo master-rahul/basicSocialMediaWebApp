@@ -32,7 +32,9 @@ app.use(expressLayouts);            // to implements partials
 app.use(express.static('./assets'));    // to access files during rendering
 app.use(bodyParser.urlencoded({extended : false}));    // parses form data into readable object
 app.use(cookieParser());            // parses cookie 
+app.use('/uploads', express.static(__dirname + '/uploads')); // making uploads path available for the browser
 
+//app.use(express.static('./uploads'));
 app.use(session({
     name: 'sample',
     secret: 'hello',

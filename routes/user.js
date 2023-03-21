@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router()
 const userController = require('../controllers/user')
 const passport = require('../config/passport_local_strategy')

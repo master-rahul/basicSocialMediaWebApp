@@ -73,8 +73,7 @@ module.exports.create = async function (request, response) {
 }
 
 module.exports.delete = async function (request, response) {
-
-    //SECOND_BEST WAY
+         //SECOND_BEST WAY
     // Comment.findById(request.params.id, function (error, comment) {
     //     if(error) return response.redirect('back');
     //     else{
