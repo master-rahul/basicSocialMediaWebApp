@@ -7,7 +7,6 @@ router.use('/user/', require('./user'));
 router.use('/session/', require('./session'));
 router.use('/post/', require('./post'));
 router.use('/comment/', require('./comment'));
-
 router.get('/',routeController.home)
 
 module.exports = router;

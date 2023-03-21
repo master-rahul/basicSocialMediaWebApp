@@ -1,7 +1,7 @@
 const Post = require('../models/post');
 const Comment = require('../models/comment');
 module.exports.create = async function (request, response) {
-    // Post.create({
+      // Post.create({
     //     content: request.body.content,
     //     user: request.user.id
     // }, function (error) {
