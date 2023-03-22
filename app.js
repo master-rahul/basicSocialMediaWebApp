@@ -8,6 +8,7 @@ const MongoStore = require('connect-mongo');        // Fetch connect-mongo modul
 const sassMiddleware = require('node-sass-middleware');
 const db = require('./config/mongoose');
 const passportLocal = require('./config/passport_local_strategy');
+const passportJwt = require('./config/passport_jwt_strategy');  // must declared on the most outer index file
 const ipAddress = require('./config/ipAddress');
 const flash = require('connect-flash');
 const customMiddleware = require('./config/middleware');
