@@ -1,6 +1,7 @@
 const db = require('../config/mongoose');
 const User = require('../models/user');
-
+const fs = require('fs');
+const path = require('path');
 module.exports.signIn = function (request, response) {
     return response.render('signIn', { title: 'Sign In' })
 }
@@ -62,20 +63,61 @@ module.exports.update = async function (request, response) {
     try{
         if (request.user.id != request.params.id) return response.status(401).send('Unauthorized');
         let user = await User.findById(request.params.id);
-        User.uploadedAvatar(request, response, function (error) {
-            if(error) console.log("Multer Error" , error);
-            console.log(request.file);
-            console.log(request.body);
-            user.name = request.body.name;
-            user.email = request.body.email;
-            if(request.file){
-                // this is saving the path along with filename in the avatar field of User Schema
-                user.avatar = User.avatarPath + '/' + request.file.filename;
-            }
-            user.save();
-            request.flash('success', 'Profile Updated Successful');
-            return response.redirect('back');
-        });
+
+        if(request.xhr){
+            console.log('XHR');
+            User.uploadedAvatar(request, response, function (error) {
+                if (error) {
+                    request.flash('error', 'File size exceeds 4mb for profile picture');
+                    request.flash('success', 'Profile Updated Successful');
+                    return response.redirect('back');
+                }
+                console.log(request.file);
+                console.log(request.body);
+                user.name = request.body.name;
+                user.email = request.body.email;
+                if (request.file) {
+                    // this is saving the path along with filename in the avatar field of User Schema
+                    if (user.avatar != null) fs.unlinkSync(path.join(__dirname, '..', user.avatar));
+                    user.avatar = User.avatarPath + '/' + request.file.filename;
+                }
+                user.save();
+                request.flash('success', 'Profile Updated Successful');
+                return response.status(200).json({
+                    data: {
+                        profileData : user,
+                        name: request.user.name
+                    },
+                    message: "User Updated!"
+                }).send();
+            });
+
+        }
+        else{
+            User.uploadedAvatar(request, response, function (error) {
+                if (error) {
+                    request.flash('error', 'File size exceeds 4mb for profile picture');
+                    request.flash('success', 'Profile Updated Successful');
+                    return response.redirect('back');
+                }
+                console.log(request.file);
+                console.log(request.body);
+                user.name = request.body.name;
+                user.email = request.body.email;
+                if (request.file) {
+                    // this is saving the path along with filename in the avatar field of User Schema
+                    if (user.avatar != null) fs.unlinkSync(path.join(__dirname, '..', user.avatar));
+                    user.avatar = User.avatarPath + '/' + request.file.filename;
+                }
+                user.save();
+                request.flash('success', 'Profile Updated Successful');
+                return response.redirect('back');
+            });
+
+        }
+        
+    
+        
        // await User.findByIdAndUpdate(request.params.id,{ name: request.body.name, email: request.body.email });
     } catch(error){
         request.flash('error', 'Unauthorized');

@@ -32,8 +32,20 @@ const storage = multer.diskStorage({
     }
 });
 
+
+
 // static functions for access from controllers
-userSchema.statics.uploadedAvatar = multer({storage : storage}).single('avatar');
+
+userSchema.statics.uploadedAvatar = multer({
+    storage: storage, limits: { fileSize: 4 * 1024 * 1024 }, fileFilter : (request, file, callback) => {
+        if (file.mimetype == 'image/png' || file.mimetype == 'image/jpeg' || file.mimetype == 'image/jpg') return callback(null, true);
+        else{
+            request.flash('error', 'File type is not valid for profile picture');
+            return callback(null, false);    
+        } 
+    } 
+}).single('avatar');
+
 userSchema.statics.avatarPath = AVATAR_PATH;
 
 const User = new mongoose.model('User', userSchema);

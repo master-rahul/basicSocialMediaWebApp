@@ -1,8 +1,9 @@
 const cookieParser = require('cookie-parser');       // Fetch cookie-parser modules  .
-const { findById } = require('../models/post');
+const { findById, populate } = require('../models/post');
 //const db = require('../config/mongoose');
 const Post = require('../models/post');
 const User = require('../models/user');
+const { options } = require('../routes/user');
 
 module.exports.home =  async function(request, response) {
 
@@ -68,7 +69,20 @@ module.exports.home =  async function(request, response) {
 
     // BEST WAY FOR QUERIES (ASYNC + AWAIT)
     try{
-        let posts = await Post.find({}).sort('-createdAt').populate('user').populate({ path: 'comments', populate: { path: 'user' }, options: { sort: { createdAt: -1 } } });
+        let posts = await Post.find({}).sort('-createdAt')
+        .populate({
+            path: 'user',
+            select: '-password' //hides password from the view
+        })
+        .populate({ 
+            path: 'comments',
+            options : {
+                sort : '-createdAt',
+                populate :{
+                    path : 'user'
+                }
+            }
+        })
         let users = await User.find();
         return response.render('home', { title: 'Home', posts: posts, allUsers: users });
     }catch(error){

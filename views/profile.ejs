@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="/css/profile.css">
-<img src="<%=profileData.avatar%>" alt="<%=profileData.name%>" width="100" height="100">
+<div id="image"> <img src="<%=profileData.avatar%>" alt="<%=profileData.name%>" width="100" height="100"> </div>
+
 <h1> Hi This is Profile Page</h1>    
 <%if(locals.id == locals.profileData.id || locals.userId == locals.profileData.id){%>
        
-    <form action="/user/update/<%=profileData.id%>" method="POST" enctype="multipart/form-data">   <!-- multipart/form-data is used for sending files. -->
+    <form action="/user/update/<%=profileData.id%>" method="POST" enctype="multipart/form-data" id="user-update">   <!-- multipart/form-data is used for sending files. -->
         <label>Update Your Information : </label>
         <br>
         <input type="text" name="name" placeholder="Enter Your Name" value="<%=profileData.name%>" required>
