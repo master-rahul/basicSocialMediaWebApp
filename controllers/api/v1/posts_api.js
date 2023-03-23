@@ -23,11 +23,18 @@ module.exports.posts = async function (request, response) {
 module.exports.delete = async function (request, response) {
     try {
         let post = await Post.findById(request.params.id);
-        post.remove();
-        await Comment.deleteMany({ post: request.params.id });
-        return response.json(200, {
-            message : "Posts and associated comments deleted successfully"
-        });          
+        if(post.user == request.user.id){
+            post.remove();
+            await Comment.deleteMany({ post: request.params.id });
+            return response.json(200, {
+                message: "Posts and associated comments deleted successfully"
+            });      
+        }else {
+            return response.json(401, {
+                message : 'You cannot delete this post!'
+            });
+        }
+           
     } catch (error) {
         return response.json(500,{
             message : "Internal Server Error"

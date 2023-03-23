@@ -1,6 +1,7 @@
 const passport = require("../config/passport_local_strategy");
 
 module.exports.create = function (request, response) {  
+    console.log('Session Creation');
     request.flash('success', 'Logged In Successfully');
     return response.redirect('/');
 }
