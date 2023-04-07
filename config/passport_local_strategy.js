@@ -4,22 +4,11 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 const MongoStore = require('connect-mongo');        // Fetch connect-mongo modules.
 const cookie = require('cookie');
-let cookieValue;
-const { MongoClient } = require('mongodb');
-// or as an es module:
-// import { MongoClient } from 'mongodb'
-
-// Connection URL
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
-
-// Database Name
-const dbName = 'myProject';
 
 passport.use(new LocalStrategy({
-    usernameField: 'email', // needs to match with field having property unique in UserSchema.
-    passReqToCallback : true // allows us to set the first arguments as request
-},
+        usernameField: 'email', // needs to match with field having property unique in UserSchema.
+        passReqToCallback : true // allows us to set the first arguments as request
+    },
     function (request, email, password, done) {
         // find the user and estaablish the identity
         User.findOne({ email: email }, function (error, user) {
@@ -45,13 +34,13 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (id, done) {
     //console.log('de-serialize')
-    User.findById(id, function (error, userData) {
+    User.findById(id).select('-password').exec(function (error, user) {
         if (error) return done(error);
         else {
-            var user = { name: userData.name, id: id};
+            //var user = { name: userData.name, id: id, email : userData.email};
             return done(null, user);
         }
-    });
+    })
 });
 
 passport.checkAuthentication = function (request, response, next) {

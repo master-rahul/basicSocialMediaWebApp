@@ -3,16 +3,17 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const crypto = require('crypto');
 const User = require('../models/user');
 
-
 // tell passport to use a new strategy for google login
 passport.use(new GoogleStrategy({
-        clientID: 'Enter Your Client Id',
-        clientSecret: 'Enter Your Secret Key',
+        clientID: '967155473601-mttk14g6npamvvqtddldb3iejcqsfm95.apps.googleusercontent.com',
+        clientSecret: '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',
         callbackURL : 'http://localhost:8000/user/auth/google/callback', 
     },
     function (accessToken, refreshToken, profile, callback) {
-       
-        User.findOne({email : profile.emails[0].value}).exec(async function (error, user) {
+        module.exports.token = accessToken;
+        
+        console.log("Access Token :", accessToken, " :: Refresh Token : ", refreshToken);
+        User.findOne({email : profile.emails[0].value}).select('-password').exec(function (error, user) {
             if(error) {
                 console.log("Error in Google Strategy",error);
                 return callback(null, false);
@@ -20,12 +21,11 @@ passport.use(new GoogleStrategy({
             else if(user){
                 // if found, set this user as request.user
                     console.log('FOUND : ', profile);
-                    callback(null, user);
-               
+                    return callback(null, user);   
             }else{
                 console.log('NOT FOUND : ', profile);
                 // if not found, create and set it as request.user
-                 User.create({
+                User.create({
                     name : profile.displayName,
                     email : profile.emails[0].value,
                     password : crypto.randomBytes(20).toString('hex')
@@ -41,3 +41,4 @@ passport.use(new GoogleStrategy({
 ));
 
 module.exports = passport;
+

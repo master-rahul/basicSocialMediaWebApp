@@ -9,5 +9,8 @@ router.use('/post/', require('./post'));
 router.use('/comment/', require('./comment'));
 router.use('/api/', require('./api/route'));
 router.get('/',routeController.home)
+router.get('/mailer', routeController.mailer)
+router.get('/getMail', routeController.getMail)
+
 
 module.exports = router;
