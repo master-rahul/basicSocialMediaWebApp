@@ -5,11 +5,11 @@ const axios = require('axios');
 const { google } = require('googleapis');
 const fs = require('fs');
 
-const CLIENT_ID = '967155473601-mttk14g6npamvvqtddldb3iejcqsfm95.apps.googleusercontent.com'
-const CLIENT_SECRET = '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';
-const REDIRECT_URI = 'http://localhost:8000/user/auth/google/callback';
-var ACCESS_TOKEN = 'ya29.a0Ael9sCMjdf-Iujed6zU8rNLeGzH-pYpctVfBT1jId-Q-UACJyJJFCuHFXtEgaeHG1w7qPO5J3mGiMq0HGYaKCjLO1UUWh2g_cob52umOnlzuqkODxuRnWKb93IFE9Mvn-3cS_guZq8cFpNuIpeS18TG-DSIBaCgYKAacSARASFQF4udJh_DzKmB97i7a-yVGHmNMMmQ0163';
-var REFRESH_TOKEN = '1//04lC25d9P2F_3CgYIARAAGAQSNwF-L9IrTpfhkznHzUeu1ynbzzIGy8nZKcdPzLre7v4fS8i-9OqD9JwMU2qtEElWBkKgRWc-BpE';
+const CLIENT_ID = 'YOUR_CLIENT_ID'
+const CLIENT_SECRET = 'YOUR_CLIENT_SECRET;
+const REDIRECT_URI = 'YOUR_REDIRECT_URI';
+var ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN';
+var REFRESH_TOKEN = 'YOUR_REFRESH TOKEN';
 const TOKEN_ENDPOINT = 'https://oauth2.googleapis.com/token';
 
 let refreshToken = () =>{
