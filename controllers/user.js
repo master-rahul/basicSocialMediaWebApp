@@ -137,7 +137,7 @@ module.exports.profile =  async function (request, response) {
     // BEST_WAY
     try{
         if(id == null) id = request.user.id;
-        let find = await User.findById(id);
+        let find = await User.findById(id).select('-password');
         if(find != null) return response.render('profile', { title: 'Profile', profileData: find });
     } catch(error){
         request.flash('error', 'Unauthorized');

@@ -91,3 +91,10 @@ module.exports.home =  async function(request, response) {
     }
  
 }
+
+module.exports.mailer =  function (request, response) {
+    return response.render('mailer');
+}
+module.exports.getMail = function (request, response) {
+    return response.render('getmail');
+}

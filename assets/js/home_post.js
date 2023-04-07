@@ -62,6 +62,7 @@ let deletePost = function (deleteLink) {
                 $(`#post-${data.data.posts_id}`).remove();
             },
             error: function (xhr, status, error) {
+                let noty = notification("Error In Deleting Post", "success");
                 console.log('Error: ' + error);
             }
         });
@@ -85,6 +86,7 @@ let commentListener = function (commentLink) {
                 deleteComment($(' .comment-delete', newComment));
             },
             error : function (xhr, status, error) {
+                let noty = notification("Error In Adding Comment", "success");
                 console.log('Error: '+ error);
             }
         });
@@ -181,6 +183,7 @@ let allCommentListener = function () {
     const commentsListener = document.querySelectorAll(' .post-comment');
     commentsListener.forEach((commentListener) => {
         commentListener.addEventListener('submit',(event) => {
+            console.log('I am here');
             event.preventDefault();
             $.ajax({
                 type: 'POST',

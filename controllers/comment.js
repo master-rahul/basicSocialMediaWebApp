@@ -1,9 +1,11 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
-
+const queue = require('../config/kue');
+const commentMailer = require('../mailer/comment_mailer');
+const commentEmailWorker = require('../workers/comments_email_worker');
 
 module.exports.create = async function (request, response) {
-
+   
     // SECOND_BEST WAY
 
     // Post.findById(request.body.postId, function (error, post) {
@@ -40,14 +42,39 @@ module.exports.create = async function (request, response) {
     //         return response.redirect('back');
     //     }
     // });
-
+    //console.log("TOKEN IN COMMENT CREATION :", passport.token);
     // BEST_WAY
+    const passport = require('../config/passport_google_oauth2_strategy');
+
     try{
         let post = await Post.findById(request.body.postId);
         if (post) {
             let comment = await Comment.create({ content: request.body.content, user: request.user.id, post: request.body.postId });
             post.comments.push(comment);
             post.save();
+            try {
+                comment = await comment.populate('user','name email');
+            } catch (error) {
+                console.log('Error in POPULATING HERE', error);
+            }
+            
+            try {
+                //commentMailer.newComment(comment);
+
+                // creating a job for sending emails to a queue 'comment_emails'
+                // let job = queueMicrotask.create('comment_emails', comment).save(function (error) {
+                //     if(error) console.log("Error in Creating in Queue");
+                //     console.log(job.id);
+                // })
+                // creating a job for sending emails to a queue 'comment_emails' 
+                let job = queue.create('comment_emails', comment).save(function (error) {
+                    if(error) {console.log('Error in sending to the queue', error); return;}
+                    console.log('Job Enqueued', job.id);
+                })
+            } catch (error) {
+                
+            }
+           
             if(request.xhr){
                 return response.status(200).json({
                     data : {
