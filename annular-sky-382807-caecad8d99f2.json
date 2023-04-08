@@ -1,12 +1,12 @@
 {
   "type": "service_account",
-  "project_id": "annular-sky-382807",
-  "private_key_id": "caecad8d99f2fc3a7f11eb34c3d2bdb23c3ae2f2",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDEBj/ixv5xkdJ2\nFok73Ajk87hySSNGMO0pKJpcPXVmtX1dYhTucSORKcyAJf0O15pS42+dBDnOF+jW\nSlyXBaeFiVe51aAYQFs/UKO8TQSabi9m57U2YjeT9HKwocGqNZgnE8+W2r2aV+3q\nnbRrOrKUF1OUaFqB0dLEDXCaRyd6wtF3BItnsAv56CwiAb5tc/LkiqjUzm6IrIrX\nKkdoTixUMvoEjvnbbVc68KNfsNeqWdTjYyF4dKCrZgPcAuiOJeqqaSBzA3QWUIuD\nBEGh1XIAKeyD7A2YtzBsnTXrhzdaZZSpdY6hqP73waX71AW6QEYUxsTa2Ddnr1sn\ncKcB0fVlAgMBAAECggEAI1F88T8pWQ0M/nnRABgFAjtnYDANSvhFwsSuCzCHlpnc\nnJavbsazwdPmJLCzh5kRFR4lXgUE5T0plnKPfCZoqIa2Z6U10yjFSAMffS3jRm/T\n2pak78eCfAXvJCQA4MoHQAMxw9xljQmKtFr1xtwskMIjLPogVIOZlflV8HYhhtyC\nU36PchPqqVke+kNpNBkHL8ybMzpxdlWjj+e8gkIYT5FNqFB9/qfVtqXLurNQhCnl\n5SufQfPTm72kSuktgcOngyFfjU9aDAYBlBQA07e7nZMzagpXQGSJUnBYiXxPA15P\n6wegPdcpeg6LU/asSWs/e6kV66lVeD6clbsY27S8AQKBgQDqKQk5k3cHVUZQo2D5\nDOvWGsWTKlExozzzSzq6uy/Z1AIUEXd+cp8n2HiTUhI1LFDjcKu65LFzRHwCiJQ3\nwwM6YGTJavhBEFwlemA2KzhFZAFwqaNVIXu5OuNvebcVWsBXzJgNOJ+F7liqdCPV\neNQAZpIxREmxCsiLeK9is5YVfQKBgQDWTqgA/caeBl8TRP5auJd6QVzH97jM1gTi\nWm7u+XaMZOz4IDoInASNE3oXrINVq0A594o1uB5JgkpwJKhwCTPU6WQFitezeGzR\nsiVTcpzXgirj+j761a0IYx7Twogkx9ru9VSWzG6aqHSo6tqAuwQDn3NUAWm7DhIR\nJkNg8w5ECQKBgQDFyLueAkz7yK+H1ThHpP5e7mYMFCZYwwTsi5KjvxB/8W9/+/Du\nwWplgZb2+M+gUjpQog6r4hdwwVvt1+c54mKLoHgBGXVvn531mhRCLOdu1TXSL7di\nZNHYd0E8G5blVq44evvDzxwPSG9kKo1J9rE7VWgObRvBitYx2FJsEDypEQKBgQCA\naDi5/1TWsrKc9SYCbcA1fJx/JKsR8NqUVeNKRScHECH8ujKLnhAMB7OMI829sxKU\nqQGjFmLvYKYBc7WJC7qGxCEuQPblji6Fptw+l9nqNxBD8VlzKjy3XczGzTSN9UH1\nFAJPKMbM3EqqO64Ym/XXxd5wYzha4B9rLyYIHRpbIQKBgEQQtkiYXJyxCv0PQfkp\nF/fwQ+OPL8WWiKljCprjyS224x9kX+C8e81GvI4jgzD4spPQ9VCpcS7e5eYgDs49\nvbLVlU9KfWiKeTmowkBAT7+dz+68Hi8IKEJfPtAjJARjZN/GR++2TV6SswJOFV6f\n7CFkh6cpUoa48KQnwJVFA1QQ\n-----END PRIVATE KEY-----\n",
-  "client_email": "basicsocialmediaapp@annular-sky-382807.iam.gserviceaccount.com",
-  "client_id": "115713152446304083714",
+  "project_id": "YOUR_PROJECT_ID",
+  "private_key_id": "YOUR_PRIVATE_KEY_ID",
+  "private_key": "-----BEGIN PRIVATE KEY-----\YOUT_PRIVATE_KEY\n-----END PRIVATE KEY-----\n",
+  "client_email": "CLIENT_EMAIL",
+  "client_id": "CLIENT_ID",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
   "token_uri": "https://oauth2.googleapis.com/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/basicsocialmediaapp%40annular-sky-382807.iam.gserviceaccount.com"
+  "client_x509_cert_url": "YOUR_CLIENT_URL"
 }
