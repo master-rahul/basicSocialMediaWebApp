@@ -69,6 +69,7 @@ module.exports.create = async function (request, response) {
                 // creating a job for sending emails to a queue 'comment_emails' 
                 let job = queue.create('comment_emails', comment).save(function (error) {
                     if(error) {console.log('Error in sending to the queue', error); return;}
+                    
                     console.log('Job Enqueued', job.id);
                 })
             } catch (error) {
