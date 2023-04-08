@@ -6,7 +6,7 @@ const { google } = require('googleapis');
 const fs = require('fs');
 
 const CLIENT_ID = 'YOUR_CLIENT_ID'
-const CLIENT_SECRET = 'YOUR_CLIENT_SECRET;
+const CLIENT_SECRET = 'YOUR_CLIENT_SECRET';
 const REDIRECT_URI = 'YOUR_REDIRECT_URI';
 var ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN';
 var REFRESH_TOKEN = 'YOUR_REFRESH TOKEN';
