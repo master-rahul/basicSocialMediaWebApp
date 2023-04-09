@@ -31,7 +31,8 @@ app.use(sassMiddleware({
     outputStyle: 'extended',        // all code in one line or multiple lined
     prefix: '/css'                  // use to redirect to './assets/ weheneer '/css' is found to template engine
 }));
-app.use(expressLayouts);            // to implements partials                                     
+app.use(expressLayouts);            // to implements partials 
+//app.use('/js', express.static(__dirname + '/assets/js'));
 app.use(express.static('./assets'));    // to access files during rendering
 app.use(bodyParser.urlencoded({extended : false}));    // parses form data into readable object
 app.use(cookieParser());            // parses cookie 

@@ -55,7 +55,8 @@ let createPost = function () {
                 $('#flash-message').append(noty);
                 deletePost($(' .post-delete', newPost));
                 commentListener($(' .post-comment', newPost));
-                likeListenserDynamic($(' .like', newPost));
+                //likeListenserDynamic($(' .like', newPost));
+                let toggleLike = new ToggleLike($(' .like', newPost));
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);
@@ -132,7 +133,8 @@ let commentListener = function (commentLink) {
                 let noty = notification("Comment Added Successfully", "success");
                 $('#flash-message').append(noty);
                 deleteComment($(' .comment-delete', newComment));
-                likeListenserDynamic($(' .like', newComment));
+                //likeListenserDynamic($(' .like', newComment));
+                let toggleLike = new ToggleLike($(' .like', newComment));
             },
             error : function (xhr, status, error) {
                 let noty = notification("Error In Adding Comment", "success");
@@ -297,10 +299,11 @@ let allCommentListener = function () {
     });
 }
 
+
 allPostDelete();
 allCommentDelete();
 allCommentListener();
-likeListenser();
+//likeListenser();
 
 
 
