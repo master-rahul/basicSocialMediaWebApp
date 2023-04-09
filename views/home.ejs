@@ -55,6 +55,12 @@
             </p>
             <%}%>
     </section>
-
 </div>
-
+<script src ="js/home_post.js"></script>
+<script src="js/toggle_likes.js"></script>
+<script>
+    $(' .like').each(function () {
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    })
+</script>
