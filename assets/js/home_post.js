@@ -1,9 +1,42 @@
+let likeListenser = function() {
+    const likes = document.querySelectorAll(' .like');
+    likes.forEach((like) => {
+        like.addEventListener('click', (event) => {
+            event.preventDefault();
+            // console.log("Id :", $(like).data('id'));
+            // console.log("Type :", $(like).data('type'));
+            var id = $(like).data('id');
+            $.ajax({
+                type: 'get',
+                url: $(like).prop('href'), //value of href froma  tag
+                data : {
+                    id: $(like).data('id'),
+                    type: $(like).data('type')
+                },
+                success: function (data) {
+                    let noty;
+                    console.log('liked');
+                    if (data.data.deleted) noty = notification("Unliked Successfully", "success");
+                    else noty = notification("Liked Successfully", "success");
+                    $(`#like-${id}`).html(data.data.likes);
+                    $('#flash-message').append(noty);
+                },
+                error: function (xhr, status, error) {
+                    let noty = notification("Post Not Able To Like", "error");
+                    $('#flash-message').append(noty);
+                    console.log('Error: ' + error);
+                }
+            });
+        });
+    });
+}
+
+
 
 let createPost = function () {
     $('#new-post-form').submit(function (event) {
         var postId;
         event.preventDefault();
-        console.log('hello');
         // Serialize the form data to a JSON string
         var formData = JSON.stringify($(this).serializeArray());
         // Send an AJAX request to the server
@@ -12,6 +45,8 @@ let createPost = function () {
             url: '/post/create',
             data: $(this).serialize(),
             success: function (response) {
+                var id = response.data.post._id;
+                console.log('id ::: ', id);
                 // Handle the successful response here
                 let newPost = newPostDom(response.data);
                 $('#text-content').val('');
@@ -20,6 +55,7 @@ let createPost = function () {
                 $('#flash-message').append(noty);
                 deletePost($(' .post-delete', newPost));
                 commentListener($(' .post-comment', newPost));
+                likeListenserDynamic($(' .like', newPost));
             },
             error: function (xhr, status, error) {
                 console.log('Error: ' + error);
@@ -30,23 +66,35 @@ let createPost = function () {
 }   
 
 let newPostDom = function (response) {
+  
     var date = new Date(response.post.updatedAt);
     var dateString = date.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
     return $(`
-            <li id="post-${response.post._id}" class="post-list">
-            <a class="post-delete" href="/post/delete/${response.post._id}" id="post-delete-${response.post._id}">X</a>
-            ${response.post.content}<small><i>, By : <u>${response.name}</u>, UpdatedAt : <u>${dateString}</u></i></small>
-            <form action="/comment/create" class="post-comment" id="post-comment-${response.post._id}" method="POST">
-                    <input type="hidden" name="postId" value="${response.post._id}">
-                    <input type="text" name="content"  id="comment-text-${response.post._id}" placeholder="Enter Your Comment.." required>
-                    <button type="submit">Send</button>
+            <li id="post-${response.post._id}" class="post-list" style="border: lightgrey solid 1px; padding: 10px; width: 60vw;">
+            <a class="post-delete" href="/post/delete/${response.post._id}" id="post-delete-${response.post._id}"style="border: blue solid 2px; padding : 1px 5px; border-radius: 15%; box-shadow: 2px 2px 1px blue;">X</a> &nbsp;&nbsp;
+            ${response.post.content}
+            <div style="padding: 5px; margin-left: 30px;">
+                <form action="/comment/create" class="post-comment" id="post-comment-${response.post._id}" method="POST">
+                        <input type="hidden" name="postId" value="${response.post._id}">
+                        <input type="text" name="content"  id="comment-text-${response.post._id}" placeholder="Enter Your Comment.." required style="height: 20px; width: 400px; padding: 2px 5px;">
+                        <button type="submit">Send</button>
                 </form>
+            </div>
             <div class="post-comments-list">
                 <ul id="post-comments-${response.post._id}">
                 </ul>
             </div>
             <br>
+             <div style="display: inline;">
+                <a href="/likes/toggle" data-type="Post" data-id="${response.post._id}" class="like" style="text-decoration: none;"> 
+                    <img src="/icons/like_button.png" id="image1" style="height: 15px; width: 20px; object-fit: contain;">
+                </a><p id="like-${response.post._id}" style="display: inline;">0</p> Likes
+            </div>
+            <div style="display: inline; padding: 5px; margin-left: 500px; border-bottom: lightgrey solid 1px;">
+                <small><i> By : <u>${response.name}</u>, UpdatedAt : <u>${dateString}</u></i></small>
+            </div>
         </li>
+        <br>
     `);
 }
 
@@ -84,12 +132,42 @@ let commentListener = function (commentLink) {
                 let noty = notification("Comment Added Successfully", "success");
                 $('#flash-message').append(noty);
                 deleteComment($(' .comment-delete', newComment));
+                likeListenserDynamic($(' .like', newComment));
             },
             error : function (xhr, status, error) {
                 let noty = notification("Error In Adding Comment", "success");
                 console.log('Error: '+ error);
             }
         });
+    });
+}
+
+let likeListenserDynamic = function (like) {
+    $(like).click((event) =>{
+        event.preventDefault();
+        var id = $(like).data('id');
+        $.ajax({
+            type: 'get',
+            url: $(like).prop('href'), //value of href froma  tag
+            data: {
+                id: $(like).data('id'),
+                type: $(like).data('type')
+            },
+            success: function (data) {
+                let noty;
+                console.log('liked');
+                if (data.data.deleted) noty = notification("Unliked Successfully", "success");
+                else noty = notification("Liked Successfully", "success");
+                $(`#like-${id}`).html(data.data.likes);
+                $('#flash-message').append(noty);
+            },
+            error: function (xhr, status, error) {
+                let noty = notification("Post Not Able To Like", "error");
+                $('#flash-message').append(noty);
+                console.log('Error: ' + error);
+            }
+        });
+       
     });
 }
 
@@ -111,10 +189,24 @@ let deleteComment = function (deleteLink){
 }
 
 let newCommentDom = function (data) {
+    var date = new Date(data.comment.updatedAt);
+    var dateString = date.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
     return $(`
-        <li id="comment-${data.comment._id}" class="comment-list">
-            ${data.comment.content} :: <small><i>${data.name}</i></small>
-            <a href="/comment/delete/${data.comment._id}" class="comment-delete" id="comment-delete-${data.comment._id}">X</a>
+        <li id="comment-${data.comment._id}" class="comment-list" style="border: skyblue solid 1px; padding: 5px 5px;">
+            <a href="/comment/delete/${data.comment._id}" class="comment-delete" id="comment-delete-${data.comment._id}"style="border: blue solid 1px; padding : 0px 4px; border-radius: 15%; box-shadow: 2px 2px 1px blue;">X</a>&nbsp;&nbsp;
+            ${data.comment.content} 
+            <br>
+            <div style="padding: 10px 10px;">
+                <div style="display: inline;" >
+                     <a href= "/likes/toggle" data-type="Comment" data-id="${data.comment._id}" class="like" style="text-decoration: none;">
+                        <img src="/icons/like_button.png" id="image1" style="height: 13px; width: 20px; object-fit: contain;">
+                    </a><p id="like-${data.comment._id}" style="display: inline;">0</p> Likes
+                </div>
+                <div style="display: inline; padding: 5px; margin-left: 400px;">
+                   <small><i>By : <u> ${data.name} </u>, UpdatedAt : <u> ${dateString}</u></i></small>
+                </div>
+            </div>
+            
         </li>
     `);
 }
@@ -208,11 +300,7 @@ let allCommentListener = function () {
 allPostDelete();
 allCommentDelete();
 allCommentListener();
-
-
-
-
-
+likeListenser();
 
 
 

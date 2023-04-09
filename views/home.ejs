@@ -4,9 +4,9 @@
    
     <section id="feed-posts">
         <%if(locals.name){%>
-            <h4>Post : </h4>
-            <form action="/post/create" id="new-post-form" method="POST">
-                <textarea id="text-content" name="content" cols="50" rows="5" placeholder="Type here..." required></textarea>
+            <h2>Post : </h2>
+            <form action="/post/create" id="new-post-form" method="POST" >
+                <textarea id="text-content" name="content" cols="60" rows="8" placeholder="Type here..." required style="border: blue solid 2px;"></textarea>
                 <input type="submit" value="Post">
             </form>
         <%}%>
