@@ -71,11 +71,11 @@ module.exports.home =  async function(request, response) {
     try{
         let posts = await Post.find({}).sort('-createdAt')
         .populate({
-            path: 'user',
+            path: 'user likes',
             select: '-password' //hides password from the view
         })
         .populate({ 
-            path: 'comments',
+            path: 'comments likes',
             options : {
                 sort : '-createdAt',
                 populate :{

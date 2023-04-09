@@ -1,6 +1,25 @@
-<li id="comment-<%=comment._id%>" class="comment-list">
-    <%=comment.content%> :: <small><i><%=comment.user.name%></i></small>
+<li id="comment-<%=comment._id%>" class="comment-list" style="border: skyblue solid 1px; padding: 5px 5px;">
     <%if(post.user.id==locals.userId || locals.userId==comment.user.id){ %>
-        <a href="/comment/delete/<%=comment.id%>" class="comment-delete" id="comment-delete-<%=comment._id%>">X</a>
+        <a href="/comment/delete/<%=comment.id%>" class="comment-delete" id="comment-delete-<%=comment._id%>"style="border: blue solid 1px; padding : 0px 4px; border-radius: 15%; box-shadow: 2px 2px 1px blue;">X</a>
+        &nbsp;&nbsp;
+    <%}%> 
+    <%=comment.content%>  
+    <%if(locals.userId){ %>
+    
+        <div style="padding: 10px 10px;">
+            <div style="display: inline;" class="comment-like">
+                <a href="likes/toggle" data-type="Comment" data-id="<%=comment._id%>" class="like" style="text-decoration: none;">
+                    <img src="/icons/like_button.png" id="image1" style="height: 13px; width: 20px; object-fit: contain;">
+                </a> <p id="like-<%=comment._id%>" style="display : inline;"><%=comment.likes.length%></p> Likes
+            </div>
+            <div style="display: inline; padding: 5px; margin-left: 400px;">
+                <small><i>By : <u><%=comment.user.name%></u>, UpdatedAt : <u><%=comment.updatedAt.toDateString()%></u></i></small>
+            </div>
+        </div>
+    <%}else{%>
+        <br>
+        <p id="like-<%=comment._id%>" style="display : inline;color : blue; font-weight: 600;" >
+            <%=comment.likes.length%>
+         Likes </p>
     <%}%>
 </li>

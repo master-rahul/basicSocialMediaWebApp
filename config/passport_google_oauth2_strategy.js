@@ -7,7 +7,7 @@ const User = require('../models/user');
 passport.use(new GoogleStrategy({
         clientID: 'YOUR_CLIENT_ID',
         clientSecret: 'YOUR_CLIENT_SECRET',
-        callbackURL : 'YOUR_CALLBACK_URL', 
+        callbackURL: 'http://localhost:8000/user/auth/google/callback', 
     },
     function (accessToken, refreshToken, profile, callback) {
         module.exports.token = accessToken;

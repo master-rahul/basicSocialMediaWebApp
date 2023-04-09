@@ -8,6 +8,7 @@ router.use('/session/', require('./session'));
 router.use('/post/', require('./post'));
 router.use('/comment/', require('./comment'));
 router.use('/api/', require('./api/route'));
+router.use('/likes/', require('./likes'));
 router.get('/',routeController.home)
 router.get('/mailer', routeController.mailer)
 router.get('/getMail', routeController.getMail)
