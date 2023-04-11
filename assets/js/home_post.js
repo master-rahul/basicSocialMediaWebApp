@@ -71,7 +71,7 @@ let newPostDom = function (response) {
     var date = new Date(response.post.updatedAt);
     var dateString = date.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
     return $(`
-            <li id="post-${response.post._id}" class="post-list" style="border: lightgrey solid 1px; padding: 10px; width: 60vw;">
+            <li id="post-${response.post._id}" class="post-list">
             <a class="post-delete" href="/post/delete/${response.post._id}" id="post-delete-${response.post._id}"style="border: blue solid 2px; padding : 1px 5px; border-radius: 15%; box-shadow: 2px 2px 1px blue;">X</a> &nbsp;&nbsp;
             ${response.post.content}
             <div style="padding: 5px; margin-left: 30px;">
