@@ -1,7 +1,34 @@
 
 <link rel="stylesheet" href="/css/home.css">
 <div id="home-container">
-   
+    
+    <%if(locals.name){%>
+        <section id="options-menu">
+            <h3 style="margin-left: 10%;">Notifications</h3>
+            <div id="notification">
+                <%if(pendingRequests.length> 0){%>
+                <div id="friend-request">
+                    <h4>Pending Friend Request :</h4>
+                        <%for(req of pendingRequests){%>
+                            <div>
+                                <div class="friend-request-name" id="name-<%=req._id%>">
+                                    <a href="/user/profile/<%=req.from_user.id%>">
+                                        <%=req.from_user.name%>
+                                    </a>
+                                </div>
+                                <div class="friend-request-accept-button" id="button-<%=req._id%>">
+                                    <button class="accept-friend-request-button" data-name="<%=req.from_user.name%>"data-to="<%=req.from_user._id%>" data-id="<%=req._id%>"
+                                        onclick="acceptFriendRequest(this)">Accept </button>
+                                </div>
+                            </div>
+                           
+                        <%}%>
+                    
+                    </div>
+                <%}%>
+            </div>
+        </section>
+    <%}%>
     <section id="feed-posts">
         <%if(locals.name){%>
             <h2>Post : </h2>
@@ -10,6 +37,7 @@
                 <input type="submit" value="Post">
             </form>
         <%}%>
+            
         <!-- <% /* %>
             <div id="post-list-container">
                 <ul>
@@ -45,19 +73,51 @@
     </section>
     
     <section id="user-friends">
-        <h4>Friends</h4>
-        <%for(u of allUsers){%>
-            <%if(u.id == locals.userId) continue; %>
-            <p>
-                <a href="/user/profile/<%=u.id%>">
-                    <%=u.name%>
-                </a>
-            </p>
-            <%}%>
+        <%if(locals.name){%>
+            <h3>Friends</h3>
+            
+            <ul id="friends-list">
+                    <%for(u of friends){%>
+                        <li>
+                            <div class="username">
+                                <a href="/user/profile/<%=u.id%>">
+                                    <%=u.name%>
+                                </a>
+                            </div>
+                        </li>
+                    <%}%> 
+            </ul>
+
+        <%}%>
+        <%if(allUsers.length > 0){%>
+            <h3>Users</h3>
+            <div id="users">
+                <ul id="user-list-container">
+                        <%for(u of allUsers){%>
+                            <%if(u.id==locals.userId) continue; %>
+                            <li id="user-<%=u.id%>">
+                                <div style="display: flex;">
+                                    <div class="username">
+                                        <a href="/user/profile/<%=u.id%>">
+                                            <%=u.name%>
+                                        </a>
+                                    </div>
+                                    <%if(locals.name){%>
+                                        <div class="username-button">
+                                            <button class="friend-request-button" data-to="<%=u.id%>" onclick="sendFriendRequest(this)">Add Friend</button>
+                                        </div>
+                                    <%}%>
+                                </div>
+                            </li>
+                        <%}%>
+                </ul>
+            </div>
+        <%}%>
     </section>
 </div>
 <script src ="js/home_post.js"></script>
 <script src="js/toggle_likes.js"></script>
+<script src="js/friend.js"></script>
 <script>
     $(' .like').each(function () {
         let self = this;
