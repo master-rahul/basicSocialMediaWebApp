@@ -109,3 +109,204 @@
   margin: 0px 10px;
   border-bottom: 1px solid lightgrey;
   padding-bottom: 15px; }
+
+#chat-box {
+  max-height: 442px;
+  max-width: 350px;
+  min-height: 442px;
+  min-width: 350px;
+  border: 1px solid #D7B161;
+  border-radius: 2%; }
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit; }
+
+/* Style the dropdown label */
+.dropdown label {
+  font-size: 8px;
+  margin-bottom: 8px; }
+
+/* Style the dropdown select */
+.dropdown select {
+  width: 85%;
+  font-family: monospace;
+  font-size: 13px;
+  padding: 8px 9px;
+  border-radius: 7px;
+  border: none;
+  background-color: #fcf5e5;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-down-b-512.png");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  transition: background-color 0.2s ease-in-out;
+  border-bottom: 2px solid lightgrey; }
+
+.dropdown select:hover {
+  cursor: pointer;
+  background-color: #CDEEB0; }
+
+/* Style the dropdown select when it's focused */
+.dropdown select:focus {
+  outline: none;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1); }
+
+/* Style the dropdown options */
+.dropdown select option {
+  font-family: monospace;
+  font-size: 16px;
+  padding: 12px 16px;
+  background-color: #f7f7f7;
+  color: #333; }
+
+/* Style the first option */
+.dropdown select option:first-child {
+  color: #999; }
+
+/* Style the hover state for options */
+.dropdown select option:hover {
+  background-color: #e6e6e6; }
+
+#message-box {
+  min-height: 323px;
+  max-height: 323px;
+  border-bottom: 1px solid lightgrey;
+  padding: 10px;
+  background-image: url("/images/chat-background.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: auto; }
+
+#chat-input {
+  display: flex; }
+
+#chat-input div {
+  min-height: 67.2px;
+  min-width: 280px;
+  margin-right: 10px;
+  flex-grow: 1; }
+
+#chat-input div textarea {
+  flex: 1;
+  font-family: monospace;
+  background-color: #F4F8F0;
+  border-color: lightgrey;
+  border-radius: 7px;
+  padding: 5px 5px; }
+
+#chat-input div textarea:hover {
+  background-color: #FFFEFC;
+  color: black; }
+
+#chat-input div textarea:focus {
+  border-color: blue; }
+
+#chat-input div button {
+  font-size: 1rem;
+  font-family: monospace;
+  flex-grow: 0;
+  min-width: 70px;
+  margin-left: -5px;
+  background-color: #fcf5e5;
+  border-color: #F8F2E5;
+  border-radius: 7px;
+  border: 1px solid lightgrey; }
+
+#chat-input div button:hover {
+  cursor: pointer;
+  background-color: #CDEEB0; }
+
+#chat-box {
+  position: fixed;
+  bottom: 20px;
+  /* adjust as needed */
+  right: 10px;
+  /* adjust as needed */
+  /* adjust as needed */
+  border-radius: 10px;
+  padding: 1px;
+  box-shadow: 0px 0px 5px blue; }
+
+.hide-button {
+  font-family: monospace;
+  font-size: 22px;
+  font-weight: 200;
+  border-radius: 7px;
+  padding: 3.5px 0px;
+  border: none;
+  background-color: #fcf5e5;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  transition: background-color 0.2s ease-in-out;
+  border-left: 2px solid lightgrey;
+  border-bottom: 2px solid lightgrey;
+  width: 15%;
+  position: absolute;
+  top: 0px;
+  right: 0px; }
+
+.hide-button:hover {
+  cursor: pointer;
+  background-color: #CDEEB0; }
+
+.hidden {
+  display: none; }
+
+.chat-icon {
+  font-family: monospace;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fcf5e5;
+  font-size: 26px;
+  font-weight: 100;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid lightgrey; }
+
+.chat-icon:hover {
+  background-color: #CDEEB0; }
+
+.visible {
+  display: block; }
+
+.message {
+  display: flex;
+  margin: 10px 0; }
+
+.outgoing-message {
+  font-family: monospace;
+  background-color: #AA7C23;
+  font-size: 5px;
+  color: white;
+  border-radius: 10px 10px 0 10px;
+  padding: 10px;
+  align-self: flex-end;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  font-size: 1.1rem;
+  line-height: 1.2rem;
+  justify-content: flex-end;
+  /* align message to the right */
+  margin-left: auto;
+  /* push message to the right edge */
+  overflow-wrap: break-word; }
+
+.outgoing-message, .incoming-message {
+  height: auto;
+  /* set height to auto to adjust to content */ }
