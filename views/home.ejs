@@ -113,11 +113,43 @@
                 </ul>
             </div>
         <%}%>
+        <%if(locals.name){%>
+            
+            <div id="chat-box" class="chatbox">
+                <div id="drop-down-friend-list" class="dropdown">
+                    <!-- 
+            			<select id="friend" name="fruits" style="width: 100%; height: 100%; font-size : 1.1rem; padding: 10px 10px" -->
+                    <select id="friend" name="fruits">
+                        <option value="rahul">Rahul</option>
+                        <option value="Aradhana">Aradhana</option>
+                        <option value="pooja">Pooja</option>
+                        <option value="sourabh">Sourabh</option>
+                    </select>
+                    <button class="hide-button" onclick="toggleChatbox()">-</button>
+                </div>
+                <div id="message-box">
+            
+                </div>
+                <div id="chat-input">
+                    <div style="display: inline-flex;">
+                        <textarea type="text" placeholder="Type your message here"></textarea>
+                    </div>
+            
+                    <div style="display: inline-flex; margin-left: -5px">
+                        <button id="send-button" onclick="sendMessage()">Send</button>
+                    </div>
+            
+                </div>
+            </div>
+            <button id="chat-icon" class="chat-icon hidden" onclick="showChatbox()"> + </button>
+
+        <%}%>
     </section>
 </div>
 <script src ="js/home_post.js"></script>
 <script src="js/toggle_likes.js"></script>
 <script src="js/friend.js"></script>
+<script src="js/chat.js"></script>
 <script>
     $(' .like').each(function () {
         let self = this;
