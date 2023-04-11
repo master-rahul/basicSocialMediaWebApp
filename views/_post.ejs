@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/_post.css">
 
-<li id="post-<%=post._id%>" class="post-list" style="border: lightgrey solid 1px; padding: 10px; width: 60vw;">
+<li id="post-<%=post._id%>" class="post-list" >
     <%if(post.user.id==locals.userId){ %>
         <a class="post-delete" href="/post/delete/<%=post._id%>" id="post-delete-<%=post._id%>" style="border: blue solid 2px; padding : 1px 5px; border-radius: 15%; box-shadow: 2px 2px 1px blue;">X</a>
         &nbsp;&nbsp;
