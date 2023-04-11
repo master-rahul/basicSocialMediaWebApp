@@ -10,3 +10,7 @@
   width: 70px;
   font-family: monospace;
   font-size: 1rem; }
+
+.post-list {
+  max-width: 90%;
+  min-width: 600px; }

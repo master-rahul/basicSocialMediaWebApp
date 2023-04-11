@@ -1,9 +1,12 @@
-const cookieParser = require('cookie-parser');       // Fetch cookie-parser modules  .
+const cookieParser = require('cookie-parser');       // Fetch cookie-parser modules.
 const { findById, populate } = require('../models/post');
 //const db = require('../config/mongoose');
 const Post = require('../models/post');
 const User = require('../models/user');
+const Friend = require('../models/friend');
+const PendingRequest = require('../models/pendingRequests');
 const { options } = require('../routes/user');
+const { request } = require('express');
 
 module.exports.home =  async function(request, response) {
 
@@ -84,7 +87,48 @@ module.exports.home =  async function(request, response) {
             }
         })
         let users = await User.find();
-        return response.render('home', { title: 'Home', posts: posts, allUsers: users });
+        if(request.user){
+            let friend = await User.findById(request.user.id); // getting friend list from 'friends' field
+            let friendList =[]; 
+            for (friends of friend.friends){
+                let ff = await Friend.findOne({ _id: friends._id }) // populating each id of friend list
+                            .populate({
+                                path: 'from_user',
+                                select: 'name'                      // populating 'name' field from_user
+                            })
+                            .populate({
+                                path: 'to_user',    
+                                select: 'name'                      // populating 'name' field to_user
+                            })
+                if(ff.from_user._id == request.user.id) {
+                    friendList.push({id : ff.to_user._id, name : ff.to_user.name});         // pushing friend to a friendList
+                    users = users.filter(user => user._id.toString() !== ff.to_user._id.toString());    // removing users which are friends.
+                }
+                else {
+                    friendList.push({ id: ff.from_user._id, name: ff.from_user.name });      // pushing friend to a friendList
+                    users = users.filter(user => user._id.toString() !== ff.from_user._id.toString()); // removing users which are friends.
+                }
+                //users = users.filter(user => user._id.toString() != ff.from_user._id.toString() && user._id.toString() != ff.to_user._id.toString());
+            }
+            console.log("UserList:  ",users);
+
+
+            const pendingRequests = await PendingRequest.find({ to_user: request.user.id }).populate({
+                path : 'from_user',
+                select : 'name'
+            });
+            const requestedUsersFrom = await PendingRequest.find({from_user : request.user.id});
+            for (req of requestedUsersFrom){
+                users = users.filter(user => user._id.toString() !== req.to_user._id.toString()); // removing users which are requested to be friends but has not accepted
+            }
+            const requestedUsersTo = await PendingRequest.find({ to_user: request.user.id });
+            for (req of requestedUsersTo) {
+                users = users.filter(user => user._id.toString() !== req.from_user._id.toString()); // removing users which are requested to be friends but has not accepted
+            }
+            console.log('Requested Users', requestedUsersFrom);
+
+            return response.render('home', { title: 'Home', posts: posts, allUsers: users , friends : friendList, pendingRequests : pendingRequests});
+        }else return response.render('home', { title: 'Home', posts: posts, allUsers: users });
     }catch(error){
         console.log('Error : ',error);
         return response.status('500').send();

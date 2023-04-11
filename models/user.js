@@ -19,8 +19,15 @@ const userSchema = new mongoose.Schema({
     },
     avatar : {
         type : String
-    }
-}, { timestamps: true });       // Adds two fields 'createdAt' and 'updatedAt'
+    },
+    friends : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Friend'
+        }
+    ]
+}, { timestamps: true });  
+     // Adds two fields 'createdAt' and 'updatedAt'
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
