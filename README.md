@@ -1,2 +1,3 @@
 #BasicSocialMediaWebApp
-https://github.com/master-rahul/basicSocialMediaWebApp/blob/d937527afbc0017d026100c437f71c5755cceca7/Screenshot%202023-04-11%20at%203.00.28%20PM.png
+
+<img width="1680" alt="Screenshot 2023-04-11 at 3 00 28 PM" src="https://user-images.githubusercontent.com/53015177/231120936-65e90004-f453-42b2-8264-cf7f662b84c6.png">
