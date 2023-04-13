@@ -38,7 +38,7 @@ function sendMessage() {
         if (!messagesByFriend[selectedFriend]) {
             messagesByFriend[selectedFriend] = [];
         }
-        messagesByFriend[selectedFriend].push(messageElement.textContent);
+        messagesByFriend[selectedFriend].push(messageElement);
 
 
         // Add the message element to the message box
@@ -65,21 +65,22 @@ friendDropdown.addEventListener('change', function () {
 
     // display the stored messages for this friend
     messagesByFriend[selectedFriend].forEach(function (message) {
-        var messageBox = document.querySelector("#message-box");
+        // var messageBox = document.querySelector("#message-box");
        
-        var messageElement = document.createElement("div");
-        messageElement.classList.add("message");
-        messageElement.classList.add("outgoing-message");
-        messageElement.textContent = message;
+        // var messageElement = document.createElement("div");
+        // messageElement.classList.add("message");
+        // messageElement.classList.add("outgoing-message");
+        // messageElement.textContent = message;
 
-        // Set the width of the message element based on the length of the message
-        var messageBoxWidth = document.querySelector("#message-box").offsetWidth;
-        var messageWidth = Math.min(0.7 * messageBoxWidth, message.length * 10 + 20);
-        messageElement.style.width = messageWidth + "px";
-        messageElement.style.alignSelf = "right";
-        messageElement.style.fontSize = "13px";
-        messageElement.style.fontFamily = "monospace";
-        messageBox.appendChild(messageElement);
+        // // Set the width of the message element based on the length of the message
+        // var messageBoxWidth = document.querySelector("#message-box").offsetWidth;
+        // var messageWidth = Math.min(0.7 * messageBoxWidth, message.length * 10 + 20);
+        // messageElement.style.width = messageWidth + "px";
+        // messageElement.style.alignSelf = "right";
+        // messageElement.style.fontSize = "13px";
+        // messageElement.style.fontFamily = "monospace";
+        // messageBox.appendChild(messageElement);
+        messageBox.appendChild(message);
         // messageBox.innerHTML += `<div class="message">${message}</div>`;
     });    
 });
