@@ -20,10 +20,10 @@ passport.use(new GoogleStrategy({
             }
             else if(user){
                 // if found, set this user as request.user
-                    console.log('FOUND : ', profile);
+                    //console.log('FOUND : ', profile);
                     return callback(null, user);   
             }else{
-                console.log('NOT FOUND : ', profile);
+                // console.log('NOT FOUND : ', profile);
                 // if not found, create and set it as request.user
                 User.create({
                     name : profile.displayName,
