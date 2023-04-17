@@ -1,0 +1,109 @@
+[0mGET / [36m304[0m 63.478 ms - -[0m
+[0mGET /js/home_post.js [36m304[0m 1.768 ms - -[0m
+[0mGET /js/toggle_likes.js [36m304[0m 1.095 ms - -[0m
+[0mGET /js/friend.js [36m304[0m 1.283 ms - -[0m
+[0mGET /js/chat_engine.js [36m304[0m 1.376 ms - -[0m
+[0mGET /user/signIn [36m304[0m 9.091 ms - -[0m
+[0mGET /css/layout.css [32m200[0m 2.763 ms - 24[0m
+[0mGET /css/_header.css [32m200[0m 4.111 ms - 1261[0m
+[0mGET /user/auth/google [36m302[0m 6.016 ms - 0[0m
+[0mGET /user/auth/google/callback?code=4%2F0AVHEtk59M_Bx3L3whhpciP0nYzuhJPH4jfVll3ISHIhB-S9UyRTbLdIFL4owToU5TjH2oA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent [36m302[0m 633.976 ms - 46[0m
+[0mGET / [32m200[0m 62.561 ms - 27947[0m
+[0mGET /css/_chat_box.css [32m200[0m 3.307 ms - 1299[0m
+[0mGET /css/home.css [32m200[0m 3.473 ms - 6736[0m
+[0mGET /css/_post.css [32m200[0m 1.837 ms - 362[0m
+[0mGET /css/layout.css [36m304[0m 1.568 ms - -[0m
+[0mGET /css/_header.css [36m304[0m 2.192 ms - -[0m
+[0mGET /css/_comment.css [32m200[0m 3.012 ms - 35[0m
+[0mGET /js/home_post.js [36m304[0m 0.507 ms - -[0m
+[0mGET /js/toggle_likes.js [36m304[0m 0.424 ms - -[0m
+[0mGET /js/friend.js [36m304[0m 0.287 ms - -[0m
+[0mGET /js/chat_engine.js [36m304[0m 0.374 ms - -[0m
+[0mGET /icons/user.png [36m304[0m 1.539 ms - -[0m
+[0mGET /icons/like_button.png [36m304[0m 0.448 ms - -[0m
+[0mPOST /post/create [32m200[0m 48.487 ms - 263[0m
+[0mGET /friend/add?to=64342eab98f643c8c4fc7ec9 [32m200[0m 28.334 ms - 44[0m
+::1 - GET / HTTP/1.1 200 28637 - 92.330 ms
+::1 - GET /js/home_post.js HTTP/1.1 304 - - 2.702 ms
+::1 - GET /js/toggle_likes.js HTTP/1.1 304 - - 2.622 ms
+::1 - GET /js/friend.js HTTP/1.1 304 - - 2.637 ms
+::1 - GET /js/chat_engine.js HTTP/1.1 304 - - 2.707 ms
+::1 - GET /icons/user.png HTTP/1.1 304 - - 2.820 ms
+::1 - GET /icons/like_button.png HTTP/1.1 304 - - 3.078 ms
+::1 - GET / HTTP/1.1 304 - - 94.745 ms
+::1 - GET /css/_chat_box.css HTTP/1.1 200 1299 - 4.378 ms
+::1 - GET /css/home.css HTTP/1.1 200 6736 - 5.905 ms
+::1 - GET /js/home_post.js HTTP/1.1 304 - - 2.414 ms
+::1 - GET /css/_post.css HTTP/1.1 200 362 - 5.102 ms
+::1 - GET /css/_comment.css HTTP/1.1 200 35 - 4.768 ms
+::1 - GET /css/layout.css HTTP/1.1 200 24 - 4.875 ms
+::1 - GET /js/toggle_likes.js HTTP/1.1 304 - - 1.069 ms
+::1 - GET /css/_header.css HTTP/1.1 200 1261 - 4.686 ms
+::1 - GET /js/friend.js HTTP/1.1 304 - - 1.150 ms
+::1 - GET /js/chat_engine.js HTTP/1.1 304 - - 0.849 ms
+::1 - GET /icons/user.png HTTP/1.1 304 - - 0.841 ms
+::1 - GET /icons/like_button.png HTTP/1.1 304 - - 0.319 ms
+::1 - GET /likes/toggle?id=643d286453e0d35e94e65517&type=Post HTTP/1.1 200 68 - 39.493 ms
+::1 - GET /friend/add?to=643527e86649fd63fad30acd HTTP/1.1 200 44 - 12.023 ms
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET / HTTP/1.1" 200 27723 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/home_post.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/toggle_likes.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/chat_engine.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/friend.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /icons/user.png HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /icons/like_button.png HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/_chat_box.css HTTP/1.1" 200 1299 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/home.css HTTP/1.1" 200 6736 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/_post.css HTTP/1.1" 200 362 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/_comment.css HTTP/1.1" 200 35 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/layout.css HTTP/1.1" 200 24 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/_header.css HTTP/1.1" 200 1261 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/home_post.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/toggle_likes.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/friend.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/chat_engine.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /icons/user.png HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /icons/like_button.png HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/_chat_box.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/home.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/_comment.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/_post.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/layout.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /css/_header.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/home_post.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/toggle_likes.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/friend.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /js/chat_engine.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /icons/user.png HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:40 +0000] "GET /icons/like_button.png HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /session/Destroy HTTP/1.1" 302 46 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET / HTTP/1.1" 200 17429 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /css/_chat_box.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /css/home.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /css/_post.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /js/home_post.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /js/toggle_likes.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /css/_comment.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /js/friend.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /css/layout.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /css/_header.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:51 +0000] "GET /js/chat_engine.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:58 +0000] "GET /user/signIn HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:58 +0000] "GET /css/_header.css HTTP/1.1" 304 - "http://localhost:8000/user/signIn" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:11:58 +0000] "GET /css/layout.css HTTP/1.1" 304 - "http://localhost:8000/user/signIn" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "POST /session/create HTTP/1.1" 302 46 "http://localhost:8000/user/signIn" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET / HTTP/1.1" 200 29461 "http://localhost:8000/user/signIn" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /css/_chat_box.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /css/home.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /css/_post.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /css/_comment.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /css/layout.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /css/_header.css HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /js/home_post.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /js/toggle_likes.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /js/friend.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /js/chat_engine.js HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /icons/user.png HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [17/Apr/2023:11:12:02 +0000] "GET /icons/like_button.png HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"

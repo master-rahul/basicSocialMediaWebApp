@@ -1,6 +1,7 @@
 const express = require('express')                                                      // To fetch express module, used for creating HTTP server
 const bodyParser = require('body-parser')                                               // To fetch body-parser module, used for parsing request body
 const cookieParser = require('cookie-parser')                                           // To fetch cookie-parser module, used for parsing cookie
+const logger = require('morgan');
 const expressLayouts = require('express-ejs-layouts');                                  // To fetch express-ejs-layouts module, used for redering partials 
 const passport = require('passport');                                                   // To fetch passport module, used for multiple authentication strategy
 const expressSession = require('express-session');                                      // To fetch express-session module, used with passport for creating session-cookies
@@ -16,6 +17,7 @@ const ipAddress = require('./config/ipAddress');                                
 const flash = require('connect-flash');                                                 // To fetch connect-flash module, used for send flash noticication in webpage
 const customMiddleware = require('./config/middleware');                                // To fetch middleware module, used to add certains fields in response 
 const noty = require('noty');                                                           // To fetch noty module, used for beautifying the flash messages
+const environment = require('./config/environment');
 const app = express();                                                                  // To fetch express module, used for creating HTTP server with support of other application protocols
 
 // Setup the chat server to be used with socket.io
@@ -30,14 +32,16 @@ app.set('layout extractStyles', true);                                          
 app.set('layout extractScripts', true);                                                 // Sets that the scripsts files '.js' needs to be extracted from partials.
 
 // Middlewares :
-app.use(sassMiddleware({                                                                // This middleware allows us to populate css files from scss files 
-    src: path.join(__dirname, env.asset_path, '/scss'),                                  // source to pick up the scss files to convert.
-    dest: path.join(__dirname, env.asset_path, '/css'),                                  // destination for the converted scss file
-    debug: false,                                                                       // prints error when the error in converting in scss to css.
-    outputStyle: 'extended',                                                            // all code in one line or multiple lined
-    prefix: '/css'                                                                      // use to redirect to './assets/ weheneer '/css' is found to template engine
-}));
-
+if(env.name == 'development'){
+    app.use(sassMiddleware({                                                                // This middleware allows us to populate css files from scss files 
+        src: path.join(__dirname, env.asset_path, '/scss'),                                  // source to pick up the scss files to convert.
+        dest: path.join(__dirname, env.asset_path, '/css'),                                  // destination for the converted scss file
+        debug: false,                                                                       // prints error when the error in converting in scss to css.
+        outputStyle: 'extended',                                                            // all code in one line or multiple lined
+        prefix: '/css'                                                                      // use to redirect to './assets/ weheneer '/css' is found to template engine
+    }));
+}
+app.use(logger(env.morgan.mode, env.morgan.options));
 app.use(expressLayouts);                                                                // Middleware for able to render partials from the rendered pages.
 //app.use('/js', express.static(__dirname + '/assets/js'));
 app.use(express.static(env.asset_path));                                                    // Middleware which serves respectives folder for client to request for the dependent files.
