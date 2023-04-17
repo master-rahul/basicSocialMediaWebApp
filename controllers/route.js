@@ -110,7 +110,7 @@ module.exports.home =  async function(request, response) {
                 }
                 //users = users.filter(user => user._id.toString() != ff.from_user._id.toString() && user._id.toString() != ff.to_user._id.toString());
             }
-            console.log("UserList:  ",users);
+            //console.log("UserList:  ",users);
 
 
             const pendingRequests = await PendingRequest.find({ to_user: request.user.id }).populate({
@@ -125,7 +125,7 @@ module.exports.home =  async function(request, response) {
             for (req of requestedUsersTo) {
                 users = users.filter(user => user._id.toString() !== req.from_user._id.toString()); // removing users which are requested to be friends but has not accepted
             }
-            console.log('Requested Users', requestedUsersFrom);
+           // console.log('Requested Users', requestedUsersFrom);
 
             return response.render('home', { title: 'Home', posts: posts, allUsers: users , friends : friendList, pendingRequests : pendingRequests});
         }else return response.render('home', { title: 'Home', posts: posts, allUsers: users });

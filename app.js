@@ -10,6 +10,8 @@ const db = require('./config/mongoose');                                        
 const passportLocal = require('./config/passport_local_strategy');                      // To fetch the configuration of passport-local strategy for creating middlewares for accessing request.
 const passportJwt = require('./config/passport_jwt_strategy');                          // To fetch the configuration of passport-jwt strategy for creating middlewares for accessing request.
 const passportGoogle = require('./config/passport_google_oauth2_strategy');             // To fetch the configuration of passport-oauth2 stragtegy for creating middleware for accessing request.
+const env = require('./config/environment');
+const path = require('path');
 const ipAddress = require('./config/ipAddress');                                        // To fetch ipAddress module, used for getting local ipAddress of the system for hosting.
 const flash = require('connect-flash');                                                 // To fetch connect-flash module, used for send flash noticication in webpage
 const customMiddleware = require('./config/middleware');                                // To fetch middleware module, used to add certains fields in response 
@@ -29,8 +31,8 @@ app.set('layout extractScripts', true);                                         
 
 // Middlewares :
 app.use(sassMiddleware({                                                                // This middleware allows us to populate css files from scss files 
-    src: './assets/scss',                                                               // source to pick up the scss files to convert.
-    dest: './assets/css',                                                               // destination for the converted scss file
+    src: path.join(__dirname, env.asset_path, '/scss'),                                  // source to pick up the scss files to convert.
+    dest: path.join(__dirname, env.asset_path, '/css'),                                  // destination for the converted scss file
     debug: false,                                                                       // prints error when the error in converting in scss to css.
     outputStyle: 'extended',                                                            // all code in one line or multiple lined
     prefix: '/css'                                                                      // use to redirect to './assets/ weheneer '/css' is found to template engine
@@ -38,14 +40,14 @@ app.use(sassMiddleware({                                                        
 
 app.use(expressLayouts);                                                                // Middleware for able to render partials from the rendered pages.
 //app.use('/js', express.static(__dirname + '/assets/js'));
-app.use(express.static('./assets'));                                                    // Middleware which serves respectives folder for client to request for the dependent files.
+app.use(express.static(env.asset_path));                                                    // Middleware which serves respectives folder for client to request for the dependent files.
 app.use(bodyParser.urlencoded({extended : false}));                                     // Middleware used to parser request body and convert into a readable object.
 app.use(cookieParser());                                                                // Allows to parse cookies present in request in order to verify authentication.   
 app.use('/uploads', express.static(__dirname + '/uploads'));                            // Making the uploads path available for client for requesting dependent files.
 
 app.use(expressSession({                                                                // Express-session created after authentication
     name: 'sample',                                                                     // Cookie Name
-    secret: 'hello',                                                                    // Cooke Secret
+    secret: env.session_cookie_key,                                                                    // Cooke Secret
     saveUninitialized: false,                                                           
     resave: false,
     cookie: { maxAge: (1000 * 1000) },                                                  // Age of Cookie.
