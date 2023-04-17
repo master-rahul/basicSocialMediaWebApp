@@ -16,6 +16,12 @@ const customMiddleware = require('./config/middleware');                        
 const noty = require('noty');                                                           // To fetch noty module, used for beautifying the flash messages
 const app = express();                                                                  // To fetch express module, used for creating HTTP server with support of other application protocols
 
+// Setup the chat server to be used with socket.io
+const chatServer = require('http').Server(app);                                         // Creating a chatServer using http.
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);           // Passing chatServer to chatSockets.
+chatServer.listen(4000);                                                                // Starting the chatServer at port 5000
+console.log('Chat Server is listening on port 4000');
+
 app.set('view engine', 'ejs');                                                          // Sets the type of view engine used to render the webpages before responding to the request.
 app.set('views', './views');                                                            // Sets the path for files which needs to be rendred using the view engine before sending response.
 app.set('layout extractStyles', true);                                                  // Sets that the styles files '.css' needs to be extracted from partials.
