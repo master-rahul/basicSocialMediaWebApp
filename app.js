@@ -2,6 +2,7 @@ const express = require('express')                                              
 const bodyParser = require('body-parser')                                               // To fetch body-parser module, used for parsing request body
 const cookieParser = require('cookie-parser')                                           // To fetch cookie-parser module, used for parsing cookie
 const logger = require('morgan');
+require('./config/view_helpers');
 const expressLayouts = require('express-ejs-layouts');                                  // To fetch express-ejs-layouts module, used for redering partials 
 const passport = require('passport');                                                   // To fetch passport module, used for multiple authentication strategy
 const expressSession = require('express-session');                                      // To fetch express-session module, used with passport for creating session-cookies
