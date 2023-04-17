@@ -18,7 +18,7 @@ module.exports.add = async function (request, response) {
 }
 
 module.exports.accept = async function (request, response) {
-    console.log(request.query);
+    //console.log(request.query);
     let user = await User.findById(request.user.id)
     let pendingRequests =  await PendingRequest.findById(request.query.id);
     if(pendingRequests){
