@@ -82,5 +82,8 @@ friendDropdown.addEventListener('change', function () {
         // messageBox.appendChild(messageElement);
         messageBox.appendChild(message);
         // messageBox.innerHTML += `<div class="message">${message}</div>`;
+
+
+        
     });    
 });

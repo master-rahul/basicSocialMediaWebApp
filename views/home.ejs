@@ -1,4 +1,5 @@
 
+<link rel="stylesheet" href="/css/_chat_box.css">
 <link rel="stylesheet" href="/css/home.css">
 <div id="home-container">
     
@@ -113,12 +114,12 @@
                 </ul>
             </div>
         <%}%>
-        <%if(locals.name){%>
+        <%- include('_chat_box') -%>
+        <!-- <%if(locals.name){%>
             
             <div id="chat-box" class="chatbox">
                 <div id="drop-down-friend-list" class="dropdown">
-                    <!-- 
-            			<select id="friend" name="fruits" style="width: 100%; height: 100%; font-size : 1.1rem; padding: 10px 10px" -->
+                    
                     <select id="friend" name="fruits">
                         <option value="rahul">Rahul</option>
                         <option value="Aradhana">Aradhana</option>
@@ -143,16 +144,31 @@
             </div>
             <button id="chat-icon" class="chat-icon hidden" onclick="showChatbox()"> + </button>
 
-        <%}%>
+        <%}%> -->
     </section>
+    <%=locals.userId%>
 </div>
 <script src ="js/home_post.js"></script>
 <script src="js/toggle_likes.js"></script>
 <script src="js/friend.js"></script>
-<script src="js/chat.js"></script>
+<!-- adding socket.io library in frontend  -->
 <script>
+
     $(' .like').each(function () {
         let self = this;
         let toggleLike = new ToggleLike(self);
     })
 </script>
+
+<!-- Getting socket.io library  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"
+    integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- getting subsriber socket code to connect on port 500 of http://localhost -->
+<script src="/js/chat_engine.js"></script> 
+<%if(locals.name){%>
+    <script>
+        new ChatEngine('user-chat-box', '<%=locals.email%>') // Intializing the ChatEngine class with our chat-box-id and user-email-Id.
+    </script>
+<%}%>
+
