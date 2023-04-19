@@ -1,6 +1,12 @@
 
-<link rel="stylesheet" href="/css/_chat_box.css">
-<link rel="stylesheet" href="/css/home.css">
+
+<%if(environment=='development' ){%>
+    <link rel="stylesheet" href="/css/_chat_box.css">
+    <link rel="stylesheet" href="/css/home.css">
+<%}else{%>
+        <link rel="stylesheet" type="text/css" href="<%=assetPath('css/_chat_box.css')%>">
+        <link rel="stylesheet" type="text/css" href="<%=assetPath('css/home.css')%>">
+<%}%>
 <div id="home-container">
     
     <%if(locals.name){%>
@@ -148,9 +154,18 @@
     </section>
 
 </div>
-<script src ="js/home_post.js"></script>
-<script src="js/toggle_likes.js"></script>
-<script src="js/friend.js"></script>
+<%if(environment=='development'){%>
+    <script src="js/home_post.js"></script>
+    <script src="js/toggle_likes.js"></script>
+    <script src="js/friend.js"></script>
+    <script src="/js/chat_engine.js"></script>
+<%}else{%>
+    <script src="<%=assetPath('js/home_post.js')%>"></script>
+    <script src="<%=assetPath('js/toggle_likes.js')%>"></script>
+    <script src="<%=assetPath('js/friend.js')%>"></script>
+    <script src="<%=assetPath('js/chat_engine.js')%>"></script>
+<%}%>
+
 <!-- adding socket.io library in frontend  -->
 <script>
 
@@ -164,8 +179,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"
     integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- getting subsriber socket code to connect on port 500 of http://localhost -->
-<script src="/js/chat_engine.js"></script> 
+
 <%if(locals.name){%>
     <script>
         new ChatEngine('user-chat-box', '<%=locals.email%>') // Intializing the ChatEngine class with our chat-box-id and user-email-Id.

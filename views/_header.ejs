@@ -1,12 +1,25 @@
+<%if(environment=='development' ){%>
 <link rel="stylesheet" href="/css/_header.css">
+<%}else{%>
+    <link rel="stylesheet" type="text/css" href="<%=assetPath('css/_header.css')%>">
+<%}%>
 <div id="heading">
     <div id="name">The Social App</div>
     <%if(locals.name){%>
         <div id="links">
             <%if(locals.profileData){%>
-                <a href="/"><img src="/icons/user.png"></a>
+                
+                <%if(environment=='development' ){%>
+                    <a href="/"><img src="/images/user.png"></a>
+                    <%}else{%>
+                    <a href="/"><img src="<%=assetPath('images/user.png')%>"></a>
+                <%}%>
             <%}else{%>
-                <a href="/user/profile/"><img src="/icons/user.png"></a>
+                <%if(environment=='development' ){%>
+                    <a href="/"><img src="/images/user.png"></a>
+                <%}else{%>
+                    <a href="/"><img src="<%=assetPath('images/user.png')%>"></a>
+                <%}%>
             <%}%>
             <p><%=locals.name.substring(0,12)%></p>
             <a href="/session/Destroy"><button type="button">LogOut</button></a>

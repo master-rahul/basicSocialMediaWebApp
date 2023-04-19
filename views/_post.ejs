@@ -1,5 +1,8 @@
-<link rel="stylesheet" href="/css/_post.css">
-
+<%if(environment=='development' ){%>
+    <link rel="stylesheet" href="/css/_post.css">
+    <%}else{%>
+        <link rel="stylesheet" type="text/css" href="<%=assetPath('css/_post.css')%>">
+        <%}%>
 <li id="post-<%=post._id%>" class="post-list" >
     <%if(post.user.id==locals.userId){ %>
         <a class="post-delete" href="/post/delete/<%=post._id%>" id="post-delete-<%=post._id%>" style="border: blue solid 2px; padding : 1px 5px; border-radius: 15%; box-shadow: 2px 2px 1px blue;">X</a>
@@ -30,7 +33,11 @@
     <%if(locals.userId){ %>
         <div style="display: inline;">
                 <a href="/likes/toggle" class="like" data-type="Post" data-id="<%=post._id%>" style="text-decoration: none;">
-                    <img src="/icons/like_button.png" id="image1" style="height: 13px; width: 20px; object-fit: contain;">
+                    <%if(environment=='development' ){%>
+                    <img src="/images/like_button.png" id="image1" style="height: 13px; width: 20px; object-fit: contain;">
+                    <%}else{%>
+                        <img src="<%=assetPath('images/like_button.png')%>" id="image1" style="height: 13px; width: 20px; object-fit: contain;">
+                    <%}%>
                 </a> <p id="like-<%=post.id%>" style="display: inline;"><%=post.likes.length%></p> Likes
         </div>
         <div style="padding: 5px; margin-left: 500px; border-bottom: lightgrey solid 1px; display: inline;">

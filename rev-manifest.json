@@ -1,10 +1,7 @@
 {
-  "css/_chat_box.css": "css/_chat_box-88e9d86ae0.css",
-  "css/_comment.css": "css/_comment-4c08219641.css",
-  "css/_header.css": "css/_header-f683693bf9.css",
-  "css/_post.css": "css/_post-cda154b405.css",
-  "css/home.css": "css/home-cccf7676d9.css",
-  "css/layout.css": "css/layout-131b9f6f94.css",
+  "css/home.css": "css/home-3097175f1c.css",
+  "css/layout.css": "css/layout-7411b9041d.css",
+  "css/noty.css": "css/noty-706a15718e.css",
   "css/profile.css": "css/profile-d41d8cd98f.css",
   "css/signIn.css": "css/signIn-d41d8cd98f.css",
   "css/signUp.css": "css/signUp-d41d8cd98f.css",
@@ -16,7 +13,7 @@
   "js/chat.js": "js/chat-d5586bf7d3.js",
   "js/chat_engine.js": "js/chat_engine-ddd6a645bf.js",
   "js/friend.js": "js/friend-4d8d592b23.js",
-  "js/home_post.js": "js/home_post-e08b29d1ef.js",
+  "js/home_post.js": "js/home_post-1825754eff.js",
   "js/noty.js": "js/noty-77d036be4a.js",
   "js/toggle_likes.js": "js/toggle_likes-74887d6e45.js"
 }
