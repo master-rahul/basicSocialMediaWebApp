@@ -88,7 +88,7 @@ let newPostDom = function (response) {
             <br>
              <div style="display: inline;">
                 <a href="/likes/toggle" data-type="Post" data-id="${response.post._id}" class="like" style="text-decoration: none;"> 
-                    <img src="/images/like_button.png" id="image1" style="height: 15px; width: 20px; object-fit: contain;">
+                    <img src=${document.getElementById('like_path').innerHTML.trim()} id="image1" style="height: 15px; width: 20px; object-fit: contain;">
                 </a><p id="like-${response.post._id}" style="display: inline;">0</p> Likes
             </div>
             <div style="display: inline; padding: 5px; margin-left: 500px; border-bottom: lightgrey solid 1px;">
@@ -201,7 +201,7 @@ let newCommentDom = function (data) {
             <div style="padding: 10px 10px;">
                 <div style="display: inline;" >
                      <a href= "/likes/toggle" data-type="Comment" data-id="${data.comment._id}" class="like" style="text-decoration: none;">
-                        <img src="/images/like_button.png" id="image1" style="height: 13px; width: 20px; object-fit: contain;">
+                        <img src=${document.getElementById('like_path').innerHTML.trim()} id="image1" style="height: 13px; width: 20px; object-fit: contain;">
                     </a><p id="like-${data.comment._id}" style="display: inline;">0</p> Likes
                 </div>
                 <div style="display: inline; padding: 5px; margin-left: 400px;">

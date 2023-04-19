@@ -1,4 +1,9 @@
-
+<p style="display: none;" id="like_path">
+    <%if(environment =='development'){%> /images/like_button.png
+    <%}else{%>
+        <%=assetPath('images/like_button.png')%>
+    <%}%>
+</p>
 
 <%if(environment=='development' ){%>
     <link rel="stylesheet" href="/css/_chat_box.css">
@@ -183,6 +188,7 @@
 <%if(locals.name){%>
     <script>
         new ChatEngine('user-chat-box', '<%=locals.email%>') // Intializing the ChatEngine class with our chat-box-id and user-email-Id.
+        //const pathLike = environment == 'development' ? '/images/like_button.png' : assetPath('images/like_button/png');
     </script>
 <%}%>
 

@@ -16,9 +16,9 @@
                 <%}%>
             <%}else{%>
                 <%if(environment=='development' ){%>
-                    <a href="/"><img src="/images/user.png"></a>
+                    <a href="/user/profile"><img src="/images/user.png"></a>
                 <%}else{%>
-                    <a href="/"><img src="<%=assetPath('images/user.png')%>"></a>
+                    <a href="/user/profile"><img src="<%=assetPath('images/user.png')%>"></a>
                 <%}%>
             <%}%>
             <p><%=locals.name.substring(0,12)%></p>
