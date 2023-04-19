@@ -1,14 +1,4 @@
-const fs = require('fs');
-const rfs = require('rotating-file-stream');
-const path = require('path');
-const logDirectory = path.join(__dirname, '../production_logs');
-
-fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
-
-const accessLogStream = rfs.createStream('access.log',{
-    interval : '1d',
-    path : logDirectory,
-});
+const accessLogStream = require('./logger');
 
 const development = {
     name : 'development',
@@ -21,7 +11,7 @@ const development = {
     jwt_secret : 'secret',
     morgan : {
         mode:'combined',
-        options : {stream : accessLogStream}
+        options: { stream: accessLogStream }
     }
 }
 
@@ -39,5 +29,5 @@ const production = {
         options: { stream: accessLogStream }
     }
 }
-console.log("%%%%%%%%%%%%%%%%%%",eval(process.env.SOCIALMEDIAAPP_ENVIRONMENT) == undefined ? development : eval(process.env.SOCIALMEDIAAPP_ENVIRONMENT));
 module.exports = eval(process.env.SOCIALMEDIAAPP_ENVIRONMENT) == undefined ? development : eval(process.env.SOCIALMEDIAAPP_ENVIRONMENT);
+//module.exports = development;

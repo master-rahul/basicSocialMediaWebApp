@@ -2,7 +2,7 @@ const express = require('express')                                              
 const bodyParser = require('body-parser')                                               // To fetch body-parser module, used for parsing request body
 const cookieParser = require('cookie-parser')                                           // To fetch cookie-parser module, used for parsing cookie
 const logger = require('morgan');
-require('./config/view_helpers');
+
 const expressLayouts = require('express-ejs-layouts');                                  // To fetch express-ejs-layouts module, used for redering partials 
 const passport = require('passport');                                                   // To fetch passport module, used for multiple authentication strategy
 const expressSession = require('express-session');                                      // To fetch express-session module, used with passport for creating session-cookies
@@ -18,8 +18,9 @@ const ipAddress = require('./config/ipAddress');                                
 const flash = require('connect-flash');                                                 // To fetch connect-flash module, used for send flash noticication in webpage
 const customMiddleware = require('./config/middleware');                                // To fetch middleware module, used to add certains fields in response 
 const noty = require('noty');                                                           // To fetch noty module, used for beautifying the flash messages
-const environment = require('./config/environment');
-const app = express();                                                                  // To fetch express module, used for creating HTTP server with support of other application protocols
+const app = express();  
+app.locals.environment = env.name;
+require('./config/view_helpers')(app);                                                                // To fetch express module, used for creating HTTP server with support of other application protocols
 
 // Setup the chat server to be used with socket.io
 const chatServer = require('http').Server(app);                                         // Creating a chatServer using http.

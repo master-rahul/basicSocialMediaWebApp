@@ -1,5 +1,10 @@
 
-    <link rel="stylesheet" type="text/css" href="/css/signUp.css">
+
+    <%if(environment=='development' ){%>
+        <link rel="stylesheet" href="/css/signUp.css">
+        <%}else{%>
+            <link rel="stylesheet" type="text/css" href="<%=assetPath('css/signUp.css')%>">
+            <%}%>
     <h1>Sign Up</h1>
     <form action="/user/add" method="post">
         <label>Name :</label>

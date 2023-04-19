@@ -1,6 +1,9 @@
 
-    <link rel="stylesheet" type="text/css" href="/css/signIn.css">
-
+<%if(environment=='development' ){%>
+    <link rel="stylesheet" href="/css/signIn.css">
+    <%}else{%>
+        <link rel="stylesheet" type="text/css" href="<%=assetPath('css/signIn.css')%>">
+        <%}%>
 
 
     <h1>Sign In</h1>

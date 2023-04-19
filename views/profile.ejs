@@ -1,4 +1,8 @@
-<link rel="stylesheet" href="/css/profile.css">
+<%if(environment=='development' ){%>
+    <link rel="stylesheet" href="/css/profile.css">
+<%}else{%>
+    <link rel="stylesheet" type="text/css" href="<%=assetPath('css/profile.css')%>">
+<%}%>
 <div id="image"> <img src="<%=profileData.avatar%>" alt="<%=profileData.name%>" width="100" height="100"> </div>
 
 <h1> Hi This is Profile Page</h1>    
